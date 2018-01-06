@@ -18,6 +18,15 @@ module.exports = class DirectMessage {
     get typeEvent() {
         return 'message.im';
     }
+
+    /**
+     *
+     * @return Regexp
+     */
+     async patternMention(){
+        let id = await this.base.botId();
+        return `\<\@${id}\>`;
+    }
     /**
      * check route
      * @param comparable
@@ -29,11 +38,15 @@ module.exports = class DirectMessage {
             comparable.channel !== undefined && comparable.channel.charAt(0) === FirstLetter;
     }
 
-    async replyBack(message, params) {
-        let user = await this.base.getUserById(this.response.user);
+    async isMention() {
+        let regexp = await this.patternMention();
+       return new RegExp(regexp).test(this.response.text);
+    }
 
+    async reply(message, params) {
+        let user = await this.base.getUserById(this.response.user);
         if (user.name) {
-            return this.base.postMessageToUser(user.name, message, params);
+            return this.base.postMessage(user.name, message, params);
         }
     }
 };

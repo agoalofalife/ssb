@@ -15,12 +15,11 @@ module.exports = class BaseBot extends SlackBot{
 
     /**
      * return id bot
-     * @return {PromiseLike<T> | Promise<T>}
+     * @return
      */
-    get botId(){
-       return this.getUser(this.name).then( user => {
-           return user.id;
-       })
+     async botId() {
+        let user = await this.getUser(this.name);
+        return user.id;
     }
     /**
      *

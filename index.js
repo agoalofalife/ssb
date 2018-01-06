@@ -20,9 +20,13 @@ var params = {
 
 bot.on('start', function(data) {});
 
+
+
 bot.on('message.im', async function (classMessage) {
-    let mention = await classMessage.isMention();
-    if (mention) {
-        classMessage.reply('hello', params);
-    }
+
+    // let mention = await classMessage.isMention();
+    // if (mention) {
+    //     console.log(classMessage.response)
+    //     classMessage.reply('hello', params);
+    // }
 });

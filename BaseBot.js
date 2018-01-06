@@ -31,6 +31,17 @@ module.exports = class BaseBot extends SlackBot{
             this.emit(classMessage.typeEvent, classMessage);
         }
     }
+    conversation(){
+        // this._api('conversation.create')
+    }
+
+    /**
+     * Return list emoji list
+     * @return {Promise<*>}
+     */
+     async emojiList(){
+         return await this._api('emoji.list');
+     }
 };
 
 

@@ -1,5 +1,5 @@
 const SlackBot = require('slackbots');
-const Route = require('./Messages/routes');
+const Route = require('./Controllers/routes');
 
 module.exports = class BaseBot extends SlackBot{
     /**
@@ -14,12 +14,21 @@ module.exports = class BaseBot extends SlackBot{
     }
 
     /**
+     * return id bot
+     * @return {PromiseLike<T> | Promise<T>}
+     */
+    get botId(){
+       return this.getUser(this.name).then( user => {
+           return user.id;
+       })
+    }
+    /**
      *
      * @param message object
      */
     async managerTypeMessages(message){
-        let classMessage = Route(message);
-        if(classMessage !== null) {
+        let classMessage = Route(message, this);
+        if(classMessage && classMessage !== null) {
             this.emit(classMessage.typeEvent, classMessage);
         }
     }

@@ -1,4 +1,4 @@
-const DirectMessage = require('./Message/DirectMessage');
+const DirectMessage = require('../Messages/Message/DirectMessage');
 
 /**
  * Routes message

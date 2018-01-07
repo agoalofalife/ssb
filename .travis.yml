@@ -4,5 +4,6 @@ node_js:
 before_script:
   - npm install
 script:
-  - mocha test/unit/**/*.js
-  - nyc report --reporter=text-lcov > coverage.lcov && codecov
+  - npm run test
+  - npm run coverage-html
+  - npm run report-coverage

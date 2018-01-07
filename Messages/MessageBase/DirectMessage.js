@@ -1,7 +1,5 @@
 const mixin = require('../../helper').mixin;
 const MixinMention = require('../Mixins/Mention');
-const FirstLetter = 'D';
-
 
 module.exports = mixin(MixinMention.prototype, ['constructor'])(class DirectMessage {
     /**
@@ -21,6 +19,13 @@ module.exports = mixin(MixinMention.prototype, ['constructor'])(class DirectMess
         return 'message.im';
     }
 
+    get getResponse(){
+        return this.response.text;
+    }
+
+    static firstLetter() {
+        return 'D';
+    }
     /**
      * check route
      * @param comparable
@@ -29,7 +34,7 @@ module.exports = mixin(MixinMention.prototype, ['constructor'])(class DirectMess
     static route(comparable) {
         return comparable.type === 'message' &&
             comparable.subtype === undefined &&
-            comparable.channel !== undefined && comparable.channel.charAt(0) === FirstLetter;
+            comparable.channel !== undefined && comparable.channel.charAt(0) === this.firstLetter;
     }
 
     async reply(message, params) {

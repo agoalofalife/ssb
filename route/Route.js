@@ -2,10 +2,10 @@
 
 
 module.exports = class Route {
-     route(response, classMessage, context) {
+     route(classMessage, context) {
         let cacheFn = function (regexp, callback) {
-            if (new RegExp(regexp).test(response.text)) {
-                 callback.call(context || this, response, classMessage);
+            if (new RegExp(regexp).test(classMessage.getResponse)) {
+                 callback.call(context || this, classMessage.getResponse, classMessage);
             }
             // for flow interface
             return {
@@ -14,12 +14,12 @@ module.exports = class Route {
         };
         return cacheFn;
     }
-    async routeMention(response, classMessage, context){
+    async routeMention(classMessage, context){
         let isMention = await classMessage.isMention();
 
         let cacheFn = async function (regexp, callback) {
-            if (isMention && new RegExp(regexp).test(response.text)) {
-                callback.call(context || this, response, classMessage);
+            if (isMention && new RegExp(regexp).test(classMessage.getResponse)) {
+                callback.call(context || this, classMessage.getResponse, classMessage);
             }
             // for flow interface
             return {

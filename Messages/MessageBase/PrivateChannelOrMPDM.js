@@ -2,8 +2,6 @@
 
 const mixin = require('../../helper').mixin;
 const MixinMention = require('../Mixins/Mention');
-const FirstLetter = 'G';
-
 
 module.exports = mixin(MixinMention.prototype, ['constructor'])(class PrivateChannelOrMPDM {
     /**
@@ -15,12 +13,20 @@ module.exports = mixin(MixinMention.prototype, ['constructor'])(class PrivateCha
         this.response = response;
         this.base = baseBot;
     }
+
+    static firstLetter() {
+        return 'G';
+    }
     /**
      * @link https://api.slack.com/events/message.im
      * @return {string} || {array}
      */
     get typeEvent() {
         return ['message.groups', 'message.mpim'];
+    }
+
+    get getResponse(){
+        return this.response.text;
     }
 
     /**
@@ -31,7 +37,7 @@ module.exports = mixin(MixinMention.prototype, ['constructor'])(class PrivateCha
     static route(comparable) {
         return comparable.type === 'message' &&
             comparable.subtype === undefined &&
-            comparable.channel !== undefined && comparable.channel.charAt(0) === FirstLetter;
+            comparable.channel !== undefined && comparable.channel.charAt(0) === this.firstLetter;
     }
 
     async reply(message, params) {

@@ -37,9 +37,11 @@ module.exports = class BaseBot extends SlackBot{
     async managerTypeMessages(message){
         let classMessage = routes(message, this);
         let Route = new RouteClass();
-        if(classMessage && classMessage !== null) {
-            let fnRoute = Route.route(message, classMessage, this);
-            let fnRouteMention = await Route.routeMention(message, classMessage, this);
+        // console.log(message, classMessage)
+        if (classMessage && classMessage !== null) {
+            // console.log(classMessage, classMessage.getResponse());
+            let fnRoute = Route.route(classMessage, this);
+            let fnRouteMention = await Route.routeMention(classMessage, this);
 
             if (Array.isArray(classMessage.typeEvent)) {
                 classMessage.typeEvent.forEach((nameEvent) => {

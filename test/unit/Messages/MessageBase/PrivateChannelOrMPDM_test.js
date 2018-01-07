@@ -1,5 +1,5 @@
 const assert = require('assert');
-const DirectMessage = require('./../../../../Messages/MessageBase/DirectMessage');
+const PrivateChannelOrMPDM = require('./../../../../Messages/MessageBase/PrivateChannelOrMPDM');
 const faker = require('faker');
 
 let randomFaker = faker.random.uuid();
@@ -12,9 +12,7 @@ let SlackBotFake = {
             } else{
                 reject();
             }
-
         });
-
     },
     postMessage: () => {
         return randomFaker;
@@ -25,50 +23,50 @@ let fakeResponse = {
     user:faker.name.firstName,
     type:'message',
     text:faker.lorem.text(),
-    channel:`${DirectMessage.firstLetter()}${faker.random.number()}`,
+    channel:`${PrivateChannelOrMPDM.firstLetter()}${faker.random.number()}`,
 
 };
 
-let DirectMessageObject = new DirectMessage(fakeResponse, SlackBotFake);
+let PrivateChannelOrMPDMObject = new PrivateChannelOrMPDM(fakeResponse, SlackBotFake);
 
 describe('DirectMessage', function() {
     describe('#typeEvent', function() {
         it('exist property typeEvent and return string type', function() {
-            assert.equal(DirectMessageObject.typeEvent, 'message.im');
+            assert.deepEqual(PrivateChannelOrMPDMObject.typeEvent, ['message.groups', 'message.mpim']);
         });
     });
     describe('#firstLetter', function() {
-        it('exist method firstLetter and return string letter `D`', function() {
-            assert.equal(DirectMessage.firstLetter(), 'D');
+        it('exist method firstLetter and return string letter `G`', function() {
+            assert.equal(PrivateChannelOrMPDM.firstLetter(), 'G');
         });
     });
     describe('#getResponse', function() {
         it('get text from response', function() {
-            assert.equal(DirectMessageObject.getResponse, fakeResponse.text);
+            assert.equal(PrivateChannelOrMPDMObject.getResponse, fakeResponse.text);
         });
     });
     describe('#route', function() {
         it('route true', function() {
-            assert.equal(DirectMessage.route(fakeResponse), true);
+            assert.equal(PrivateChannelOrMPDM.route(fakeResponse), true);
         });
         it('route some message', function() {
-            assert.equal(DirectMessage.route(fakeResponse.message = ''), false);
+            assert.equal(PrivateChannelOrMPDM.route(fakeResponse.message = ''), false);
         });
     });
     describe('#reply', function() {
         it('reply', async function() {
-            let result = await DirectMessageObject.reply(faker.lorem.word(), {});
+            let result = await PrivateChannelOrMPDMObject.reply(faker.lorem.word(), {});
             assert.equal(result, randomFaker);
         });
     });
     describe('#patternMention', function() {
         it('exist function', function() {
-            assert.equal(typeof  DirectMessageObject.patternMention === 'function', true);
+            assert.equal(typeof  PrivateChannelOrMPDMObject.patternMention === 'function', true);
         });
     });
     describe('#isMention', function() {
         it('exist function', function() {
-            assert.equal(typeof  DirectMessageObject.isMention === 'function', true);
+            assert.equal(typeof  PrivateChannelOrMPDMObject.isMention === 'function', true);
         });
     });
 });

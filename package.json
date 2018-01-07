@@ -13,7 +13,7 @@
     "nyc": "^11.4.1"
   },
   "scripts": {
-    "test-unit": "mocha test/unit/**/*.js",
+    "test": "mocha test/unit/**/*.js",
     "coverage":"nyc --reporter=text mocha test/unit/**/*.js",
     "coverage-html":"nyc --reporter=html mocha test/unit/**/*.js"
 

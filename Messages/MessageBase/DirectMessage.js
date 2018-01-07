@@ -34,7 +34,7 @@ module.exports = mixin(MixinMention.prototype, ['constructor'])(class DirectMess
     static route(comparable) {
         return comparable.type === 'message' &&
             comparable.subtype === undefined &&
-            comparable.channel !== undefined && comparable.channel.charAt(0) === this.firstLetter;
+            comparable.channel !== undefined && comparable.channel.charAt(0) === this.firstLetter();
     }
 
     async reply(message, params) {

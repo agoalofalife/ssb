@@ -1,7 +1,7 @@
 require('../helper');
-const DirectMessage = require('../Messages/Message/DirectMessage');
-const ChannelMessage = require('../Messages/Message/ChannelMessage');
-const PrivateChannelOrMPDM = require('../Messages/Message/PrivateChannelOrMPDM');
+const DirectMessage = require('../Messages/MessageBase/DirectMessage');
+const ChannelMessage = require('../Messages/MessageBase/ChannelMessage');
+const PrivateChannelOrMPDM = require('../Messages/MessageBase/PrivateChannelOrMPDM');
 
 /**
  * Routes message

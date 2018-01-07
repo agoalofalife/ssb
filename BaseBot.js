@@ -1,6 +1,6 @@
 const SlackBot = require('slackbots');
 const routes = require('./route/routes');
-const Route = require('./route/Route');
+const RouteClass = require('./route/Route');
 
 module.exports = class BaseBot extends SlackBot{
     /**
@@ -19,8 +19,16 @@ module.exports = class BaseBot extends SlackBot{
      * @return
      */
      async botId() {
-        let user = await this.getUser(this.name);
-        return user.id;
+         let cache = null;
+         return async function () {
+             if (cache !== null) {
+                 return cache;
+             } else {
+                 let user = await this.getUser(this.name);
+                 cache = user.id;
+                 return user.id;
+             }
+         }.bind(this)();
     }
     /**
      *
@@ -28,44 +36,24 @@ module.exports = class BaseBot extends SlackBot{
      */
     async managerTypeMessages(message){
         let classMessage = routes(message, this);
-
+        let Route = new RouteClass();
         if(classMessage && classMessage !== null) {
+            let fnRoute = Route.route(message, classMessage, this);
+            let fnRouteMention = await Route.routeMention(message, classMessage, this);
+
             if (Array.isArray(classMessage.typeEvent)) {
                 classMessage.typeEvent.forEach((nameEvent) => {
-                    this.emit(nameEvent, (new Route).route(message, classMessage, this));
+                    this.emit(nameEvent, fnRoute, fnRouteMention);
                 })
             } else{
-                this.emit(classMessage.typeEvent, (new Route).route(message, classMessage, this));
+                this.emit(classMessage.typeEvent, fnRoute, fnRouteMention);
             }
         }
     }
 
-    // /**
-    //  * Check text from slack chat and defined in code
-    //  * @param text
-    //  * @return {Function}
-    //  * @private
-    //  */
-    // _match(text){
-    //     /**
-    //      * return boolean
-    //      */
-    //     return function (match) {
-    //         return new RegExp(match).test(text)
-    //     }
-    // }
-
     conversation(){
         // this._api('conversation.create')
     }
-
-    /**
-     * Return list emoji list
-     * @return {Promise<*>}
-     */
-     async emojiList(){
-         return await this._api('emoji.list');
-     }
 };
 
 

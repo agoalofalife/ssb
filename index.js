@@ -14,18 +14,15 @@ const bot = new SlackBot({
  * @link https://stackoverflow.com/questions/41111227/how-can-a-slack-bot-detect-a-direct-message-vs-a-message-in-a-channel
  */
 
-bot.on('message.im', async function (route) {
-    // let mention = await classMessage.isMention();
+bot.on('message.im', async function (route, routeMention) {
 
-    route('hello', function (response) {
+    route('hello', function (response, classMessage) {
         console.log('hi hello')
-    })
-    .route('allo', function (response) {
-        console.log('success')
     });
-    // if (mention && match('hello')) {
-    //     classMessage.reply('hello', {
-    //         icon_emoji: ':piggy:'
-    //     });
-    // }
+
+    routeMention('allo', async function (response, classMessage) {
+        classMessage.reply('hello', {
+            icon_emoji: ':piggy:'
+        });
+    });
 });

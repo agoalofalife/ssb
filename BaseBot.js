@@ -27,6 +27,7 @@ module.exports = class BaseBot extends SlackBot{
      */
     async managerTypeMessages(message){
         let classMessage = Route(message, this);
+
         if(classMessage && classMessage !== null) {
             this.emit(classMessage.typeEvent, classMessage);
         }

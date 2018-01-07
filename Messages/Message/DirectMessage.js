@@ -1,7 +1,9 @@
+const mixin = require('../../helper').mixin;
+const MixinMention = require('../Mixins/Mention');
 const FirstLetter = 'D';
 
-module.exports = class DirectMessage {
 
+module.exports = mixin(MixinMention.prototype, ['constructor'])(class DirectMessage {
     /**
      *
      * @param response
@@ -20,14 +22,6 @@ module.exports = class DirectMessage {
     }
 
     /**
-     *
-     * @return Regexp
-     */
-     async patternMention(){
-        let id = await this.base.botId();
-        return `\<\@${id}\>`;
-    }
-    /**
      * check route
      * @param comparable
      * @return {boolean}
@@ -38,16 +32,10 @@ module.exports = class DirectMessage {
             comparable.channel !== undefined && comparable.channel.charAt(0) === FirstLetter;
     }
 
-    async isMention() {
-        let regexp = await this.patternMention();
-       return new RegExp(regexp).test(this.response.text);
-    }
-
     async reply(message, params) {
-        let user = await this.base.getUserById(this.response.user);
-        if (user.name) {
-            return this.base.postMessage(user.name, message, params);
+        if (this.response.channel) {
+            return this.base.postMessage(this.response.channel, message, params);
         }
     }
-};
+});
 

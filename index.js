@@ -25,6 +25,7 @@ bot.on('start', function(data) {});
 bot.on('message.im', async function (classMessage) {
     let mention = await classMessage.isMention();
     if (mention) {
+        // console.log(classMessage)
         classMessage.reply('hello', params);
     }
 });

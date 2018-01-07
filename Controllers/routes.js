@@ -7,7 +7,7 @@ const ChannelMessage = require('../Messages/Message/ChannelMessage');
  */
 const routes = [
     DirectMessage,
-    ChannelMessage,
+    // ChannelMessage,
 ];
 
 // check all routes and return concrete type

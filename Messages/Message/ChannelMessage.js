@@ -1,6 +1,8 @@
+const mixin = require('../../helper').mixin;
+const MixinMention = require('../Mixins/Mention');
 const FirstLetter = 'C';
 
-module.exports = class ChannelMessage {
+module.exports = mixin(MixinMention.prototype, ['constructor'])(class ChannelMessage {
 
     /**
      *
@@ -10,6 +12,7 @@ module.exports = class ChannelMessage {
     constructor(response, baseBot){
         this.response = response;
         this.base = baseBot;
+        Object.assign(this, MixinMention.prototype);
     }
     /**
      * @link https://api.slack.com/events/message.im
@@ -19,14 +22,6 @@ module.exports = class ChannelMessage {
         return 'message.channels';
     }
 
-    /**
-     *
-     * @return Regexp
-     */
-    async patternMention(){
-        let id = await this.base.botId();
-        return `\<\@${id}\>`;
-    }
     /**
      * check route
      * @param comparable
@@ -38,16 +33,11 @@ module.exports = class ChannelMessage {
             comparable.channel !== undefined && comparable.channel.charAt(0) === FirstLetter;
     }
 
-    async isMention() {
-        let regexp = await this.patternMention();
-        return new RegExp(regexp).test(this.response.text);
-    }
-
     async reply(message, params) {
         let user = await this.base.getUserById(this.response.user);
         if (user.name) {
             return this.base.postMessage(user.name, message, params);
         }
     }
-};
+});
 

@@ -29,7 +29,28 @@ module.exports = class BaseBot extends SlackBot{
         let classMessage = Route(message, this);
 
         if(classMessage && classMessage !== null) {
-            this.emit(classMessage.typeEvent, classMessage);
+            if (Array.isArray(classMessage.typeEvent)) {
+                classMessage.typeEvent.forEach((nameEvent) => {
+                    this.emit(nameEvent, classMessage, this._match(message.text));
+                })
+            } else{
+                this.emit(classMessage.typeEvent, classMessage, this._match(message.text));
+            }
+        }
+    }
+
+    /**
+     * Check text from slack chat and defined in code
+     * @param text
+     * @return {Function}
+     * @private
+     */
+    _match(text){
+        /**
+         * return boolean
+         */
+        return function (match) {
+            return new RegExp(match).test(text)
         }
     }
 

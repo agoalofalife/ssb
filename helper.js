@@ -15,6 +15,22 @@ function mixin(obj, excludeMethods = []) {
     }
 }
 
+/**
+ * For array pass function which get first argument value second key iteration
+ * if after call return null, function continue working else add in new array
+ * @param cb
+ * @return {Array}
+ */
+Array.prototype.mapIfNotNull = function (cb) {
+    let cacheNewArr = [];
+    for(let i = 0; i < this.length; i++){
+        let result = cb.call(this, this[i], i);
+        if(result !== null){
+            cacheNewArr.push(result)
+        }
+    }
+    return cacheNewArr;
+};
 
 module.exports = {
     mixin : mixin

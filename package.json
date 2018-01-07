@@ -5,5 +5,13 @@
     "slackbots": "^1.1.0",
     "to": "^0.2.9",
     "update": "^0.7.4"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "faker": "^4.1.0",
+    "mocha": "^4.1.0"
+  },
+  "scripts": {
+    "test-unit": "mocha test/unit/**/*.js"
   }
 }

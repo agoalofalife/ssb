@@ -29,7 +29,7 @@ let fakeResponse = {
 
 let PrivateChannelOrMPDMObject = new PrivateChannelOrMPDM(fakeResponse, SlackBotFake);
 
-describe('DirectMessage', function() {
+describe('PrivateChannelOrMPDM', function() {
     describe('#typeEvent', function() {
         it('exist property typeEvent and return string type', function() {
             assert.deepEqual(PrivateChannelOrMPDMObject.typeEvent, ['message.groups', 'message.mpim']);

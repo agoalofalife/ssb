@@ -13,7 +13,7 @@
     "nyc": "^11.4.1"
   },
   "scripts": {
-    "test": "mocha test/unit/**/*.js",
+    "test": "node_modules/mocha/bin/mocha test/unit/**/*.js",
     "coverage":"nyc --reporter=text mocha test/unit/**/*.js",
     "coverage-html":"nyc --reporter=html mocha test/unit/**/*.js",
     "report-coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov"

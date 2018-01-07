@@ -10,7 +10,7 @@ module.exports = class BaseBot extends SlackBot{
         super(params);
         this.on('message', this.managerTypeMessages);
 
-        // define property
+        // define property...
     }
 
     /**
@@ -31,6 +31,7 @@ module.exports = class BaseBot extends SlackBot{
             this.emit(classMessage.typeEvent, classMessage);
         }
     }
+
     conversation(){
         // this._api('conversation.create')
     }

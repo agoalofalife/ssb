@@ -1,5 +1,5 @@
 const DirectMessage = require('../Messages/Message/DirectMessage');
-
+const ChannelMessage = require('../Messages/Message/ChannelMessage');
 /**
  * Routes message
  * List classes some types message
@@ -7,6 +7,7 @@ const DirectMessage = require('../Messages/Message/DirectMessage');
  */
 const routes = [
     DirectMessage,
+    ChannelMessage,
 ];
 
 // check all routes and return concrete type

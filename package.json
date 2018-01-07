@@ -8,14 +8,15 @@
   },
   "devDependencies": {
     "chai": "^4.1.2",
+    "codecov": "^3.0.0",
     "faker": "^4.1.0",
     "mocha": "^4.1.0",
     "nyc": "^11.4.1"
   },
   "scripts": {
     "test": "node_modules/mocha/bin/mocha test/unit/**/*.js",
-    "coverage":"nyc --reporter=text mocha test/unit/**/*.js",
-    "coverage-html":"nyc --reporter=html mocha test/unit/**/*.js",
+    "coverage": "nyc --reporter=text mocha test/unit/**/*.js",
+    "coverage-html": "nyc --reporter=html mocha test/unit/**/*.js",
     "report-coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov"
   }
 }

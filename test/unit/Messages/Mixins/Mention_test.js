@@ -1,6 +1,6 @@
 const assert = require('assert');
-const MixinMention = require('./../../../Messages/Mixins/Mention');
-const mixin = require('./../../../helper').mixin;
+const MixinMention = require('../../../../Messages/Mixins/Mention');
+const mixin = require('../../../../helper').mixin;
 const faker = require('faker');
 
 let botId = faker.random.uuid();

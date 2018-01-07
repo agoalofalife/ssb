@@ -52,10 +52,6 @@ module.exports = class BaseBot extends SlackBot{
             }
         }
     }
-
-    conversation(){
-        // this._api('conversation.create')
-    }
 };
 
 

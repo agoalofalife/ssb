@@ -15,8 +15,6 @@ const bot = new SlackBot({
  */
 
 bot.on('message_changed.message.im', async function (route, routeMention) {
-
-
     route('hello', function (response, classMessage) {
         console.log('hi hello')
     });

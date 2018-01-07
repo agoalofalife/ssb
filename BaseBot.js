@@ -1,5 +1,6 @@
 const SlackBot = require('slackbots');
-const Route = require('./Controllers/routes');
+const routes = require('./route/routes');
+const Route = require('./route/Route');
 
 module.exports = class BaseBot extends SlackBot{
     /**
@@ -26,33 +27,33 @@ module.exports = class BaseBot extends SlackBot{
      * @param message object
      */
     async managerTypeMessages(message){
-        let classMessage = Route(message, this);
+        let classMessage = routes(message, this);
 
         if(classMessage && classMessage !== null) {
             if (Array.isArray(classMessage.typeEvent)) {
                 classMessage.typeEvent.forEach((nameEvent) => {
-                    this.emit(nameEvent, classMessage, this._match(message.text));
+                    this.emit(nameEvent, (new Route).route(message, classMessage, this));
                 })
             } else{
-                this.emit(classMessage.typeEvent, classMessage, this._match(message.text));
+                this.emit(classMessage.typeEvent, (new Route).route(message, classMessage, this));
             }
         }
     }
 
-    /**
-     * Check text from slack chat and defined in code
-     * @param text
-     * @return {Function}
-     * @private
-     */
-    _match(text){
-        /**
-         * return boolean
-         */
-        return function (match) {
-            return new RegExp(match).test(text)
-        }
-    }
+    // /**
+    //  * Check text from slack chat and defined in code
+    //  * @param text
+    //  * @return {Function}
+    //  * @private
+    //  */
+    // _match(text){
+    //     /**
+    //      * return boolean
+    //      */
+    //     return function (match) {
+    //         return new RegExp(match).test(text)
+    //     }
+    // }
 
     conversation(){
         // this._api('conversation.create')

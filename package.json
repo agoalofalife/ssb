@@ -15,9 +15,9 @@
     "sinon": "^4.1.3"
   },
   "scripts": {
-    "test": "mocha test/**/*.js",
-    "coverage": "nyc --reporter=text mocha mocha test/**/*.js",
-    "coverage-html": "nyc --reporter=html mocha mocha test/**/*.js",
+    "test": "mocha --recursive test",
+    "coverage": "nyc --reporter=text mocha --recursive test",
+    "coverage-html": "nyc --reporter=html mocha --recursive test",
     "report-coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov"
   }
 }

@@ -14,6 +14,7 @@ const bot = new SlackBot({
  * @link https://stackoverflow.com/questions/41111227/how-can-a-slack-bot-detect-a-direct-message-vs-a-message-in-a-channel
  */
 let s = {
+    "token":process.env.SLACK_BOT_AUTH_ACCESS_TOKEN,
     "text": "Would you like to play a game?",
     "attachments": [
         {

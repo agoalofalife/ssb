@@ -60,6 +60,10 @@ module.exports = class BaseBot extends SlackBot{
      * @link https://api.slack.com/slash-commands
      */
     listenCommands(){
+
+        this.server.get('/', (req, res) => {
+            res.redirect('https://slack.com/oauth/authorize');
+        });
         this.server.post('/conversation', (req, res) => {
             console.log(req.body);
             res.send('ok');

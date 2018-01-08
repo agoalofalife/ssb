@@ -9,7 +9,7 @@ module.exports = class Mention {
      * @return {Promise<string>}
      */
     async patternMention(){
-        let id = await this.base.botId();
+        let id = await this.base.getBotId();
         return `\<\@${id}\>`;
     }
 

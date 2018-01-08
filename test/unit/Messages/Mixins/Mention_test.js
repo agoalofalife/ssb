@@ -6,7 +6,7 @@ const faker = require('faker');
 let botId = faker.random.uuid();
 
 let SlackBotFake = {
-    botId: () => {
+    getBotId: () => {
         return new Promise((resolve, reject) => {
                 resolve(botId);
         });

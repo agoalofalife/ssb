@@ -12,20 +12,20 @@ module.exports = class BaseBot extends SlackBot{
         this.on('message', this.managerTypeMessages);
 
         // define property...
+        this.botId = null;
     }
 
     /**
      * return id bot
      * @return
      */
-     async botId() {
-         let cache = null;
+     async getBotId() {
          return async function () {
-             if (cache !== null) {
-                 return cache;
+             if (this.botId !== null) {
+                 return this.botId;
              } else {
                  let user = await this.getUser(this.name);
-                 cache = user.id;
+                 this.botId = user.id;
                  return user.id;
              }
          }.bind(this)();
@@ -37,9 +37,9 @@ module.exports = class BaseBot extends SlackBot{
     async managerTypeMessages(message){
         let classMessage = routes(message, this);
         let Route = new RouteClass();
-        // console.log(message, classMessage)
+        // if route found
         if (classMessage && classMessage !== null) {
-            // console.log(classMessage, classMessage.getResponse());
+
             let fnRoute = Route.route(classMessage, this);
             let fnRouteMention = await Route.routeMention(classMessage, this);
 

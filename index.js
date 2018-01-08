@@ -15,9 +15,9 @@ const bot = new SlackBot({
  */
 
 bot.on('message_changed.message.im', async function (route, routeMention) {
-    route('hello', function (response, classMessage) {
-        console.log('hi hello')
-    });
+    // route('hello', function (response, classMessage) {
+    //     console.log('hi hello')
+    // });
 
     // routeMention('allo', async function (response, classMessage) {
     //     classMessage.reply('hello', {
@@ -25,3 +25,5 @@ bot.on('message_changed.message.im', async function (route, routeMention) {
     //     });
     // });
 });
+
+bot.listenCommands();

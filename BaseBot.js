@@ -2,10 +2,7 @@ const SlackBot = require('slackbots');
 const routes = require('./route/routes');
 const RouteClass = require('./route/Route');
 
-const express = require('express');
-const app = express();
-const bodyParser = require("body-parser");
-app.use(bodyParser.urlencoded({extended : true}));
+const Server = require('./Server/Server').app;
 
 module.exports = class BaseBot extends SlackBot{
     /**
@@ -18,6 +15,7 @@ module.exports = class BaseBot extends SlackBot{
 
         // define property...
         this.botId = null;
+        this.server = Server;
     }
 
     /**
@@ -62,13 +60,10 @@ module.exports = class BaseBot extends SlackBot{
      * @link https://api.slack.com/slash-commands
      */
     listenCommands(){
-        app.post('/', (req, res) => {
+        this.server.post('/conversation', (req, res) => {
             console.log(req.body);
-            res.send({
-                text:'@ernie don\'t wake me up at night anymore in'
-            });
+            res.send('ok');
         });
-        app.listen(process.env.PORT_SERVER || 9000)
     }
 };
 

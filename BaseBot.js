@@ -62,7 +62,8 @@ module.exports = class BaseBot extends SlackBot{
     listenCommands(){
 
         this.server.get('/', (req, res) => {
-            res.redirect('https://slack.com/oauth/authorize');
+            console.log(req.query.code, 'authorize')
+            // res.redirect('https://slack.com/oauth/authorize');
         });
         this.server.post('/conversation', (req, res) => {
             console.log(req.body);

@@ -1,3 +1,4 @@
+const fs = require('fs');
 /**
  *
  * @param obj from is mixin
@@ -14,7 +15,9 @@ function mixin(obj, excludeMethods = []) {
         return target;
     }
 }
-
+function version() {
+    return JSON.parse(fs.readFileSync('./package.json', 'utf8')).version
+}
 /**
  * For array pass function which get first argument value second key iteration
  * if after call return null, function continue working else add in new array
@@ -33,5 +36,6 @@ Array.prototype.mapIfNotNull = function (cb) {
 };
 
 module.exports = {
+    version:version(),
     mixin : mixin
 };

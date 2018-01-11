@@ -1,7 +1,21 @@
 {
+  "name": "slack-bot",
+  "bin": {
+    "ssb": "./bin/app.js"
+  },
+  "version": "0.0.0",
+  "description": "Slack bot framework for build platform",
+  "keywords": [
+    "bot",
+    "slack",
+    "framework"
+  ],
+  "author": "TJ Holowaychuk <tj@vision-media.ca>",
+  "license": "MIT",
   "dependencies": {
     "axios": "^0.17.1",
     "body-parser": "^1.18.2",
+    "commander": "^2.13.0",
     "dotenv": "^4.0.0",
     "express": "^4.16.2",
     "nodemon": "^1.14.8",

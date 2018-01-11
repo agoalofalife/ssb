@@ -2,12 +2,10 @@ require('dotenv').config();
 let token = process.env.SLACK_BOT_TOKEN;
 const SlackBot = require('./BaseBot');
 
-
 const bot = new SlackBot({
     token: token,
     name: process.env.SLACK_BOT_NAME,
 });
-
 
 /**
  * help to determine type message
@@ -15,6 +13,7 @@ const bot = new SlackBot({
  *
  * auth magic token
  * @link https://slack.com/oauth/authorize?client_id=CLIENT_ID&scope=client+admin&redirect_uri=CALLBACK_URL
+ * @help https://github.com/blaskovicz/cut-me-some-slack#creating-a-slack-access-token
  */
 let s = {
     "text": "Would you like to play a game?",

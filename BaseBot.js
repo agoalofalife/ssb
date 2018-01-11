@@ -1,7 +1,9 @@
+require('dotenv').config();
+
 const SlackBot = require('slackbots');
 const routes = require('./route/routes');
 const RouteClass = require('./route/Route');
-
+const axios = require('axios');
 const Server = require('./Server/Server').app;
 
 module.exports = class BaseBot extends SlackBot{
@@ -27,9 +29,13 @@ module.exports = class BaseBot extends SlackBot{
              if (this.botId !== null) {
                  return this.botId;
              } else {
-                 let user = await this.getUser(this.name);
-                 this.botId = user.id;
-                 return user.id;
+                 try {
+                     let user = await this.getUser(this.name);
+                     this.botId = user.id;
+                     return user.id;
+                 } catch (err){
+                     console.log('Error name slack bot!');
+                 }
              }
          }.bind(this)();
     }
@@ -60,14 +66,25 @@ module.exports = class BaseBot extends SlackBot{
      * @link https://api.slack.com/slash-commands
      */
     listenCommands(){
-
         this.server.get('/', (req, res) => {
-            console.log(req.query.code, 'authorize')
-            // res.redirect('https://slack.com/oauth/authorize');
+            // console.log(req.query.code, 'authorize');
+            axios.get('https://slack.com/api/oauth.access', {
+               params:{
+                   client_id:  process.env.SLACK_CLIENT_ID,
+                   client_secret: process.env.SLACK_CLIENT_SECRET,
+                   code: req.query.code,
+               }
+            })
+                .then(function (response) {
+                    console.log(response.data, 'authorize');
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
         });
         this.server.post('/conversation', (req, res) => {
-            console.log(req.body);
-            res.send('ok');
+            console.log(req.body, 'conversation');
+            // res.send('ok');
         });
     }
 };

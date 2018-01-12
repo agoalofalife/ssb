@@ -32,7 +32,7 @@ module.exports = mixin(MixinMention.prototype, ['constructor'])(class ChannelMes
         return 'The event occurs when a message arrives in channel'
     }
 
-    get getResponse(){
+    get compareResponse(){
         return this.response.text;
     }
 

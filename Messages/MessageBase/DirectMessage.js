@@ -25,7 +25,7 @@ module.exports = mixin(MixinMention.prototype, ['constructor'])(class DirectMess
     get descriptionEvent() {
         return 'The event occurs when a message arrives in direct(personal)';
     }
-    get getResponse(){
+    get compareResponse(){
         return this.response.text;
     }
 

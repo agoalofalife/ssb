@@ -84,6 +84,7 @@ module.exports = class BaseBot extends SlackBot{
      * @link https://api.slack.com/slash-commands
      */
     listenCommands(){
+        // todo rewrite async await
         Server.instance.post('/commands', (req, res) => {
             let command = new Command(req.body, this);
             let fnRoute = this.Route.route(command, this);

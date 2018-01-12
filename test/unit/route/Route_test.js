@@ -4,7 +4,8 @@ const faker = require('faker');
 const Route = new RouteClass();
 
 let MessageFake = {
-    getResponse : faker.random.word(),
+    response:faker.random.word(),
+    compareResponse : faker.random.word(),
     isMention: () => {
         return new Promise((resolve, reject) => {
             resolve(true)
@@ -19,8 +20,9 @@ describe('Route', function() {
         });
         it('expected return message and classMessage', function() {
             let route = Route.route(MessageFake);
-            route(MessageFake.getResponse, function (message, classMessage) {
-                assert.equal(message, MessageFake.getResponse);
+            route(MessageFake.compareResponse, function (message, classMessage) {
+
+                assert.equal(message, MessageFake.response);
                 assert.deepEqual(classMessage, MessageFake);
             });
         });
@@ -32,8 +34,8 @@ describe('Route', function() {
         it('expected return message and classMessage', async function() {
             let route = await Route.routeMention(MessageFake);
 
-            route(MessageFake.getResponse, function (message, classMessage) {
-                assert.equal(message, MessageFake.getResponse);
+            route(MessageFake.compareResponse, function (message, classMessage) {
+                assert.equal(message, MessageFake.compareResponse);
                 assert.deepEqual(classMessage, MessageFake);
             });
         });

@@ -28,7 +28,7 @@ module.exports = class Conversation {
     get descriptionEvent() {
         return 'The event occurs when it was sent interactive message';
     }
-    get getResponse(){
+    get compareResponse(){
         return this.response.callback_id;
     }
 };

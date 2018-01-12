@@ -50,7 +50,7 @@ describe('DirectMessage', function() {
     });
     describe('#getResponse', function() {
         it('get text from response', function() {
-            assert.equal(DirectMessageObject.getResponse, fakeResponse.text);
+            assert.equal(DirectMessageObject.compareResponse, fakeResponse.text);
         });
     });
     describe('#route', function() {

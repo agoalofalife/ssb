@@ -19,6 +19,7 @@ class FakeBaseBot extends BaseBotClass{
         })
     }
     listenConversation(){}
+    listenCommands(){}
 }
 const BaseBotObject = new FakeBaseBot({token:'token', name:name});
 

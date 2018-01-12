@@ -20,7 +20,6 @@ module.exports = class Command {
     get typeEvent() {
         return 'command';
     }
-
     /**
      * Description event
      * @return {string}
@@ -29,7 +28,7 @@ module.exports = class Command {
         return 'The event occurs when was sent a message with the type "command"';
     }
 
-    get getResponse(){
+    get compareResponse(){
         return this.response.command;
     }
 };

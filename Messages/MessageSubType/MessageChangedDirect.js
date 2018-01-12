@@ -29,7 +29,7 @@ module.exports = class MessageChangedDirect extends DirectMessage {
             comparable.message !== undefined;
     }
 
-    get getResponse(){
+    get compareResponse(){
         return this.response.message.text;
     }
 };

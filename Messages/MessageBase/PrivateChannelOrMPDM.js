@@ -32,7 +32,7 @@ module.exports = mixin(MixinMention.prototype, ['constructor'])(class PrivateCha
     get descriptionEvent() {
         return 'The event occurs when a message arrives in private channel or multi direct-group';
     }
-    get getResponse(){
+    get compareResponse(){
         return this.response.text;
     }
 

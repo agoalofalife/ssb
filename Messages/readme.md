@@ -1,6 +1,4 @@
-### Description
-
-Interface Route
+### Interface Route
 
 #### Methods
 
@@ -10,7 +8,8 @@ Interface Route
    
    * comparable - response from slack server (this is object)
    
-   
+### Interface Message
+
 - Property
    
     * typeEvent - name event, which will fire 

@@ -49,7 +49,7 @@ describe('ChannelMessage', function() {
 
     describe('#getResponse', function() {
         it('get text from response', function() {
-            assert.equal(ChannelMessageObject.getResponse, fakeResponse.text);
+            assert.equal(ChannelMessageObject.compareResponse, fakeResponse.text);
         });
     });
     describe('#route', function() {

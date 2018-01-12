@@ -59,6 +59,7 @@ let s = {
  */
 bot.on('message.im', async function (route, routeMention) {
     route('hello', function (response, classMessage) {
+        console.log(response)
         classMessage.reply('hello', s);
     });
 
@@ -77,6 +78,7 @@ bot.on('conversation', async function (route, response) {
 
 bot.on('command', async function (route, response) {
     route('/start', function (responseInitiator, classConversation) {
+        console.log(responseInitiator);
         response.end('ok');
     });
 });

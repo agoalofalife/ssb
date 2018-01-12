@@ -48,7 +48,7 @@ describe('PrivateChannelOrMPDM', function() {
     });
     describe('#getResponse', function() {
         it('get text from response', function() {
-            assert.equal(PrivateChannelOrMPDMObject.getResponse, fakeResponse.text);
+            assert.equal(PrivateChannelOrMPDMObject.compareResponse, fakeResponse.text);
         });
     });
     describe('#route', function() {

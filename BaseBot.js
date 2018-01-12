@@ -7,7 +7,7 @@ const Server = require('./Server/Server');
 const Conversation = require('./Messages/Conversation');
 const Command = require('./Messages/Command');
 
-module.exports = class BaseBot extends SlackBot{
+module.exports = class BaseBot extends SlackBot {
     /**
      *
      * @param params
@@ -21,34 +21,35 @@ module.exports = class BaseBot extends SlackBot{
         this.Route = new RouteClass();
 
         // server processes run listen..
-        this.listenConversation();
-        this.listenCommands();
+        this.listenConversation(Server);
+        this.listenCommands(Server);
     }
 
     /**
      * return id bot
      * @return
      */
-     async getBotId() {
-         return async function () {
-             if (this.botId !== null) {
-                 return this.botId;
-             } else {
-                 try {
-                     let user = await this.getUser(this.name);
-                     this.botId = user.id;
-                     return user.id;
-                 } catch (err){
-                     console.log('Error name slack bot!');
-                 }
-             }
-         }.bind(this)();
+    async getBotId() {
+        return async function () {
+            if (this.botId !== null) {
+                return this.botId;
+            } else {
+                try {
+                    let user = await this.getUser(this.name);
+                    this.botId = user.id;
+                    return user.id;
+                } catch (err) {
+                    console.log('Error name slack bot!');
+                }
+            }
+        }.bind(this)();
     }
+
     /**
      *
      * @param message object
      */
-    async managerTypeMessages(message){
+    async managerTypeMessages(message) {
         let classMessage = router(message, this);
 
         // if route found
@@ -61,7 +62,7 @@ module.exports = class BaseBot extends SlackBot{
                 classMessage.typeEvent.forEach((nameEvent) => {
                     this.emit(nameEvent, fnRoute, fnRouteMention);
                 })
-            } else{
+            } else {
                 this.emit(classMessage.typeEvent, fnRoute, fnRouteMention);
             }
         }
@@ -70,7 +71,7 @@ module.exports = class BaseBot extends SlackBot{
     /**
      * @link https://api.slack.com/internal-integrations
      */
-    listenConversation(){
+    listenConversation(Server) {
         Server.instance.post('/conversation', (req, res) => {
             // todo hmmm...if key which 'payload' will changed ??
             let conversation = new Conversation(JSON.parse(req.body.payload), this);
@@ -83,7 +84,7 @@ module.exports = class BaseBot extends SlackBot{
     /**
      * @link https://api.slack.com/slash-commands
      */
-    listenCommands(){
+    listenCommands(Server) {
         Server.instance.post('/commands', (req, res) => {
             let command = new Command(req.body, this);
             let fnRoute = this.Route.route(command, this);

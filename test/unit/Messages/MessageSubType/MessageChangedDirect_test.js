@@ -44,7 +44,7 @@ describe('ChannelMessage', function() {
             assert.equal(MessageChangedDirectObject.descriptionEvent, 'The event occurs when a message was changed in direct(personal)');
         });
     });
-    describe('#getResponse', function() {
+    describe('#compareResponse', function() {
         it('get text from response', function() {
             assert.equal(MessageChangedDirectObject.compareResponse, fakeResponse.message.text);
         });

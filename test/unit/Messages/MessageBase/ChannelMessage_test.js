@@ -47,7 +47,7 @@ describe('ChannelMessage', function() {
         });
     });
 
-    describe('#getResponse', function() {
+    describe('#compareResponse', function() {
         it('get text from response', function() {
             assert.equal(ChannelMessageObject.compareResponse, fakeResponse.text);
         });

@@ -48,7 +48,7 @@ describe('DirectMessage', function() {
             assert.equal(DirectMessage.firstLetter(), 'D');
         });
     });
-    describe('#getResponse', function() {
+    describe('#compareResponse', function() {
         it('get text from response', function() {
             assert.equal(DirectMessageObject.compareResponse, fakeResponse.text);
         });

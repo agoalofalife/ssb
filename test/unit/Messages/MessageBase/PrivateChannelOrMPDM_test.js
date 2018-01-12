@@ -46,7 +46,7 @@ describe('PrivateChannelOrMPDM', function() {
             assert.equal(PrivateChannelOrMPDM.firstLetter(), 'G');
         });
     });
-    describe('#getResponse', function() {
+    describe('#compareResponse', function() {
         it('get text from response', function() {
             assert.equal(PrivateChannelOrMPDMObject.compareResponse, fakeResponse.text);
         });

@@ -7,7 +7,7 @@ const PrivateChannelOrMPDM = require('./../../Messages/MessageBase/PrivateChanne
 const Server = require('../../Server/Server');
 class FakeBaseBot extends BaseBotClass{
     constructor(params){
-        super(params)
+        super(params);
     }
     login(){}
     getUser(name){
@@ -17,8 +17,15 @@ class FakeBaseBot extends BaseBotClass{
             });
         })
     }
-    // listenConversation(){}
-    listenCommands(){}
+    listenConversation(Server){}
+    listenCommands(Server){}
+
+    parentListenConversation(Server){
+        super.listenConversation(Server)
+    }
+    parentListenCommands(Server){
+        super.listenCommands(Server)
+    }
 }
 
 let name = faker.name.firstName();
@@ -60,14 +67,47 @@ describe('BaseBot', function() {
         });
     });
     describe('#listenConversation', function() {
-
         it('test listenConversation method', function() {
-            // Server.instance.post = function (name, cb) {
-            //
-            // }
-            // console.log(Server.instance);
-            let id =  BaseBotObject.listenConversation();
-            // assert.equal(id, randomId);
+            let uuid = faker.random.uuid();
+            let server = {
+                instance :{
+                    post(route, cb) {
+                        assert.equal(typeof cb === 'function', true);
+                        assert.equal(route, '/conversation');
+                        cb.call(this, {
+                            body:{
+                                payload:'{"test":"test"}'
+                            }
+                        }, uuid)
+                    }
+                }
+            };
+            BaseBotObject.on('conversation', (fnRoute, outuuid) => {
+                assert.equal(uuid, outuuid);
+                assert.equal(typeof fnRoute === 'function', true);
+            });
+            BaseBotObject.parentListenConversation(server);
+        });
+    });
+    describe('#listenCommands', function() {
+        it('test listenCommands method', function() {
+            let uuid = faker.random.uuid();
+            let server = {
+                instance :{
+                    post(route, cb) {
+                        assert.equal(typeof cb === 'function', true);
+                        assert.equal(route, '/commands');
+                        cb.call(this, {
+                            body:{}
+                        }, uuid)
+                    }
+                }
+            };
+            BaseBotObject.on('command', (fnRoute, outuuid) => {
+                assert.equal(uuid, outuuid);
+                assert.equal(typeof fnRoute === 'function', true);
+            });
+            BaseBotObject.parentListenCommands(server);
         });
     });
 });

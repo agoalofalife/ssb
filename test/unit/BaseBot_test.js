@@ -17,8 +17,8 @@ class FakeBaseBot extends BaseBotClass{
              id:randomId
             });
         })
-
     }
+    listenConversation(){}
 }
 const BaseBotObject = new FakeBaseBot({token:'token', name:name});
 

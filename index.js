@@ -74,5 +74,9 @@ bot.on('conversation', async function (route, response) {
         response.end('ok');
     });
 });
-// todo need move this  in class
-bot.listenConversation();
+
+bot.on('command', async function (route, response) {
+    route('/start', function (responseInitiator, classConversation) {
+        response.end('ok');
+    });
+});

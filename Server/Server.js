@@ -11,7 +11,7 @@ const singleton = Symbol();
 const singletonEnforcer = Symbol();
 
 /**
- *
+ * Singleton class
  * @type {module.Server}
  */
 module.exports = class Server {

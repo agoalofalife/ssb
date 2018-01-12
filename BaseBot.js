@@ -5,6 +5,7 @@ const {router} = require('./route/routes');
 const RouteClass = require('./route/Route');
 const Server = require('./Server/Server');
 const Conversation = require('./Messages/Conversation');
+const Command = require('./Messages/Command');
 
 module.exports = class BaseBot extends SlackBot{
     /**
@@ -18,6 +19,10 @@ module.exports = class BaseBot extends SlackBot{
         // define property...
         this.botId = null;
         this.Route = new RouteClass();
+
+        // processes run
+        this.listenConversation();
+        this.listenCommands();
     }
 
     /**
@@ -70,7 +75,16 @@ module.exports = class BaseBot extends SlackBot{
             // todo hmmm...if key which 'payload' will changed ??
             let conversation = new Conversation(JSON.parse(req.body.payload), this);
             let fnRoute = this.Route.route(conversation, this);
+
             this.emit(conversation.typeEvent, fnRoute, res);
+        });
+    }
+    listenCommands(){
+        Server.instance.post('/commands', (req, res) => {
+            let command = new Command(req.body, this);
+            let fnRoute = this.Route.route(command, this);
+
+            this.emit(command.typeEvent, fnRoute, res);
         });
     }
 };

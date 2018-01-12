@@ -25,6 +25,13 @@ module.exports = mixin(MixinMention.prototype, ['constructor'])(class PrivateCha
         return ['message.groups', 'message.mpim'];
     }
 
+    /**
+     * Description event
+     * @return {string}
+     */
+    get descriptionEvent() {
+        return 'The event occurs when a message arrives in private channel or multi direct-group';
+    }
     get getResponse(){
         return this.response.text;
     }

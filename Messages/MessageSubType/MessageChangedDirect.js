@@ -9,7 +9,13 @@ module.exports = class MessageChangedDirect extends DirectMessage {
     get typeEvent() {
         return 'message_changed.message.im';
     }
-
+    /**
+     * Description event
+     * @return {string}
+     */
+    get descriptionEvent() {
+        return 'The event occurs when a message was changed in direct(personal)';
+    }
     /**
      * check route
      * @param comparable

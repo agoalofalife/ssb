@@ -42,19 +42,21 @@ program
             case 'events':
                 let out = [];
                 routes.forEach((classRoute) => {
-                    let events = (new classRoute).typeEvent;
+                    let obejetRoute = (new classRoute);
+                    let events = obejetRoute.typeEvent;
+                    let description = obejetRoute.descriptionEvent;
 
                     if (Array.isArray(events)) {
                         events.forEach((event) => {
                             out.push({
                                 event:event.verbose,
-                                description:'',
+                                description:description.verbose,
                             });
                         })
                     } else {
                         out.push({
                             event:events.verbose,
-                            description:'',
+                            description:description.verbose,
                         });
                     }
                 });

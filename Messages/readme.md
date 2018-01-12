@@ -1,6 +1,6 @@
 ### Description
 
-Interface Message
+Interface Route
 
 #### Methods
 
@@ -14,6 +14,7 @@ Interface Message
 - Property
    
     * typeEvent - name event, which will fire 
+    * descriptionEvent - description event (for cli)
          
    
    

@@ -41,6 +41,12 @@ describe('ChannelMessage', function() {
             assert.equal(ChannelMessageObject.typeEvent, 'message.channels');
         });
     });
+    describe('#descriptionEvent', function() {
+        it('equal description', function() {
+            assert.equal(ChannelMessageObject.descriptionEvent, 'The event occurs when a message arrives in channel');
+        });
+    });
+
     describe('#getResponse', function() {
         it('get text from response', function() {
             assert.equal(ChannelMessageObject.getResponse, fakeResponse.text);

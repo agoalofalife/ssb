@@ -37,6 +37,12 @@ describe('DirectMessage', function() {
             assert.equal(DirectMessageObject.typeEvent, 'message.im');
         });
     });
+    describe('#descriptionEvent', function() {
+        it('equal description', function() {
+            assert.equal(DirectMessageObject.descriptionEvent, 'The event occurs when a message arrives in direct(personal)');
+        });
+    });
+
     describe('#firstLetter', function() {
         it('exist method firstLetter and return string letter `D`', function() {
             assert.equal(DirectMessage.firstLetter(), 'D');

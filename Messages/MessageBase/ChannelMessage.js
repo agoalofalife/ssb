@@ -24,9 +24,18 @@ module.exports = mixin(MixinMention.prototype, ['constructor'])(class ChannelMes
         return 'message.channels';
     }
 
+    /**
+     * Description event
+     * @return {string}
+     */
+    get descriptionEvent() {
+        return 'The event occurs when a message arrives in channel'
+    }
+
     get getResponse(){
         return this.response.text;
     }
+
     /**
      * check route
      * @param comparable

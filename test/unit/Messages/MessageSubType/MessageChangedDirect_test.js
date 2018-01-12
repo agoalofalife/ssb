@@ -39,6 +39,11 @@ describe('ChannelMessage', function() {
             assert.equal(MessageChangedDirectObject.typeEvent, 'message_changed.message.im');
         });
     });
+    describe('#typeEvent', function() {
+        it('exist property typeEvent and return string type', function() {
+            assert.equal(MessageChangedDirectObject.descriptionEvent, 'The event occurs when a message was changed in direct(personal)');
+        });
+    });
     describe('#getResponse', function() {
         it('get text from response', function() {
             assert.equal(MessageChangedDirectObject.getResponse, fakeResponse.message.text);

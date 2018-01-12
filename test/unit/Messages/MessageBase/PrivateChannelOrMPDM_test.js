@@ -35,6 +35,12 @@ describe('PrivateChannelOrMPDM', function() {
             assert.deepEqual(PrivateChannelOrMPDMObject.typeEvent, ['message.groups', 'message.mpim']);
         });
     });
+    describe('#descriptionEvent', function() {
+        it('equal description', function() {
+            assert.equal(PrivateChannelOrMPDMObject.descriptionEvent, 'The event occurs when a message arrives in private channel or multi direct-group');
+        });
+    });
+
     describe('#firstLetter', function() {
         it('exist method firstLetter and return string letter `G`', function() {
             assert.equal(PrivateChannelOrMPDM.firstLetter(), 'G');

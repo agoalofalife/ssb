@@ -1,3 +1,7 @@
+/**
+ * 
+ * @type {module.Route}
+ */
 module.exports = class Route {
      route(classMessage, context) {
         let cacheFn = function (regexp, callback) {

@@ -54,7 +54,9 @@ let s = {
         }
     ]
 };
-
+/**
+ * this is example
+ */
 bot.on('message.im', async function (route, routeMention) {
     route('hello', function (response, classMessage) {
         classMessage.reply('hello', s);
@@ -67,4 +69,10 @@ bot.on('message.im', async function (route, routeMention) {
     // });
 });
 
-bot.listenCommands();
+bot.on('conversation', async function (route, response) {
+    route('welcome_button', function (responseInitiator, classConversation) {
+        response.end('ok');
+    });
+});
+// todo need move this  in class
+bot.listenConversation();

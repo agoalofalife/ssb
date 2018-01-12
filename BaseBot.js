@@ -3,8 +3,8 @@ require('dotenv').config();
 const SlackBot = require('slackbots');
 const {router} = require('./route/routes');
 const RouteClass = require('./route/Route');
-
-const Server = require('./Server/Server').app;
+const Server = require('./Server/Server');
+const Conversation = require('./Messages/Conversation');
 
 module.exports = class BaseBot extends SlackBot{
     /**
@@ -17,9 +17,7 @@ module.exports = class BaseBot extends SlackBot{
 
         // define property...
         this.botId = null;
-
-        // run server only when you need
-        this.server = Server;
+        this.Route = new RouteClass();
     }
 
     /**
@@ -47,12 +45,12 @@ module.exports = class BaseBot extends SlackBot{
      */
     async managerTypeMessages(message){
         let classMessage = router(message, this);
-        let Route = new RouteClass();
+
         // if route found
         if (classMessage && classMessage !== null) {
 
-            let fnRoute = Route.route(classMessage, this);
-            let fnRouteMention = await Route.routeMention(classMessage, this);
+            let fnRoute = this.Route.route(classMessage, this);
+            let fnRouteMention = await this.Route.routeMention(classMessage, this);
 
             if (Array.isArray(classMessage.typeEvent)) {
                 classMessage.typeEvent.forEach((nameEvent) => {
@@ -67,11 +65,13 @@ module.exports = class BaseBot extends SlackBot{
     /**
      * @link https://api.slack.com/slash-commands
      */
-    listenCommands(){
-        // this.server.post('/conversation', (req, res) => {
-        //     console.log(req.body, 'conversation');
-        //     // res.send('ok');
-        // });
+    listenConversation(){
+        Server.instance.post('/conversation', (req, res) => {
+            // todo hmmm...if key which 'payload' will changed ??
+            let conversation = new Conversation(JSON.parse(req.body.payload), this);
+            let fnRoute = this.Route.route(conversation, this);
+            this.emit(conversation.typeEvent, fnRoute, res);
+        });
     }
 };
 

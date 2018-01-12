@@ -3,10 +3,12 @@ require('dotenv').config();
 require('../setting/color');
 require('console.table');
 
+const util = require('util');
 const program = require('commander');
 const { version } = require('../helper');
 const {routes} = require('../route/routes');
-
+const glob = require('glob');
+const path = require('path');
 const Server = require('../Server/Server');
 const urlAuth = 'https://slack.com/api/oauth.access';
 const axios = require('axios');
@@ -39,29 +41,35 @@ program
 
     program.command('show <what>')
     .description('Show information')
-    .action(function (what, options) {
+    .action(async function (what) {
         switch (what) {
             case 'events':
                 let out = [];
-                routes.forEach((classRoute) => {
-                    let obejetRoute = (new classRoute);
-                    let events = obejetRoute.typeEvent;
-                    let description = obejetRoute.descriptionEvent;
+                    let globPromise = util.promisify(glob);
+                    let files = await globPromise("./Messages/**/*.js", {ignore:'./Messages/Mixins/*.js'});
 
-                    if (Array.isArray(events)) {
-                        events.forEach((event) => {
+                    files.forEach((file) => {
+                        let truePath = path.resolve(process.cwd(), file);
+                        let classMessage = require(truePath);
+
+                        let objectMessage = (new classMessage);
+                        let events = objectMessage.typeEvent;
+                        let description = objectMessage.descriptionEvent;
+
+                        if (Array.isArray(events)) {
+                            events.forEach((event) => {
+                                out.push({
+                                    event:event.verbose,
+                                    description:description.verbose,
+                                });
+                            })
+                        } else {
                             out.push({
-                                event:event.verbose,
+                                event:events.verbose,
                                 description:description.verbose,
                             });
-                        })
-                    } else {
-                        out.push({
-                            event:events.verbose,
-                            description:description.verbose,
-                        });
-                    }
-                });
+                        }
+                    });
                 return console.table('List events', out);
             default:
             return console.log('Not found something to show...'.warn)

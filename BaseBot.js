@@ -20,7 +20,7 @@ module.exports = class BaseBot extends SlackBot{
         this.botId = null;
         this.Route = new RouteClass();
 
-        // processes run
+        // server processes run listen..
         this.listenConversation();
         this.listenCommands();
     }
@@ -68,7 +68,7 @@ module.exports = class BaseBot extends SlackBot{
     }
 
     /**
-     * @link https://api.slack.com/slash-commands
+     * @link https://api.slack.com/internal-integrations
      */
     listenConversation(){
         Server.instance.post('/conversation', (req, res) => {
@@ -79,6 +79,10 @@ module.exports = class BaseBot extends SlackBot{
             this.emit(conversation.typeEvent, fnRoute, res);
         });
     }
+
+    /**
+     * @link https://api.slack.com/slash-commands
+     */
     listenCommands(){
         Server.instance.post('/commands', (req, res) => {
             let command = new Command(req.body, this);

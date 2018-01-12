@@ -21,6 +21,14 @@ module.exports = class Command {
         return 'command';
     }
 
+    /**
+     * Description event
+     * @return {string}
+     */
+    get descriptionEvent() {
+        return 'The event occurs when was sent a message with the type "command"';
+    }
+
     get getResponse(){
         return this.response.command;
     }

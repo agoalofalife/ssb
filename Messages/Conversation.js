@@ -21,6 +21,13 @@ module.exports = class Conversation {
         return 'conversation';
     }
 
+    /**
+     * Description event
+     * @return {string}
+     */
+    get descriptionEvent() {
+        return 'The event occurs when it was sent interactive message';
+    }
     get getResponse(){
         return this.response.callback_id;
     }

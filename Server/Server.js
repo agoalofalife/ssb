@@ -27,7 +27,8 @@ module.exports = class Server {
         console.log('Server start, port :'.info, port);
 
         this.app = app;
-        this.app.listen(port);
+
+        this.nativeServer = this.app.listen(port);
     }
 
     /**
@@ -38,6 +39,6 @@ module.exports = class Server {
         if(!this[singleton]) {
             this[singleton] = new Server(singletonEnforcer);
         }
-        return this[singleton].app;
+        return this[singleton];
     }
 };

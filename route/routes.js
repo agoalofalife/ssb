@@ -17,10 +17,14 @@ const routes = [
     MessageChangedDirect,
 ];
 
-// check all routes and return concrete type
-// return only first match
-module.exports = function (message, baseBot) {
+function router(message, baseBot) {
     return routes.mapIfNotNull(typeMessage => {
         return typeMessage.route(message) ? new typeMessage(message, baseBot) : null;
     }).shift();
+}
+// check all routes and return concrete type
+// return only first match
+module.exports = {
+    router:router,
+    routes:routes,
 };

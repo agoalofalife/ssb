@@ -1,7 +1,7 @@
 require('dotenv').config();
 
 const SlackBot = require('slackbots');
-const routes = require('./route/routes');
+const {router} = require('./route/routes');
 const RouteClass = require('./route/Route');
 
 const Server = require('./Server/Server').app;
@@ -17,6 +17,8 @@ module.exports = class BaseBot extends SlackBot{
 
         // define property...
         this.botId = null;
+
+        // run server only when you need
         this.server = Server;
     }
 
@@ -44,7 +46,7 @@ module.exports = class BaseBot extends SlackBot{
      * @param message object
      */
     async managerTypeMessages(message){
-        let classMessage = routes(message, this);
+        let classMessage = router(message, this);
         let Route = new RouteClass();
         // if route found
         if (classMessage && classMessage !== null) {
@@ -66,10 +68,10 @@ module.exports = class BaseBot extends SlackBot{
      * @link https://api.slack.com/slash-commands
      */
     listenCommands(){
-        this.server.post('/conversation', (req, res) => {
-            console.log(req.body, 'conversation');
-            // res.send('ok');
-        });
+        // this.server.post('/conversation', (req, res) => {
+        //     console.log(req.body, 'conversation');
+        //     // res.send('ok');
+        // });
     }
 };
 

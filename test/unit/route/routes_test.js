@@ -1,7 +1,7 @@
 const assert = require('assert');
 const faker = require('faker');
 const ChannelMessage = require('./../../../Messages/MessageBase/ChannelMessage');
-const router = require('./../../../route/routes');
+const {router} = require('./../../../route/routes');
 
 let fakeResponse = {
     user:faker.name.firstName,

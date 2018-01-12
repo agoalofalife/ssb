@@ -54,6 +54,7 @@ let s = {
         }
     ]
 };
+
 bot.on('message.im', async function (route, routeMention) {
     route('hello', function (response, classMessage) {
         classMessage.reply('hello', s);

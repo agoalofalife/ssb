@@ -59,7 +59,7 @@ let s = {
  */
 bot.on('message.im', async function (route, routeMention) {
     route('hello', function (response, classMessage) {
-        console.log(response)
+        // console.log(response)
         classMessage.reply('hello', s);
     });
 

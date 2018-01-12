@@ -1,11 +1,10 @@
 const BaseBotClass = require('../../BaseBot');
 const faker = require('faker');
 const assert = require('assert');
-let name = faker.name.firstName();
-let randomId = faker.random.uuid();
 const ChannelMessage = require('./../../Messages/MessageBase/ChannelMessage');
 const PrivateChannelOrMPDM = require('./../../Messages/MessageBase/PrivateChannelOrMPDM');
 
+const Server = require('../../Server/Server');
 class FakeBaseBot extends BaseBotClass{
     constructor(params){
         super(params)
@@ -18,9 +17,12 @@ class FakeBaseBot extends BaseBotClass{
             });
         })
     }
-    listenConversation(){}
+    // listenConversation(){}
     listenCommands(){}
 }
+
+let name = faker.name.firstName();
+let randomId = faker.random.uuid();
 const BaseBotObject = new FakeBaseBot({token:'token', name:name});
 
 let fakeResponse = {
@@ -55,6 +57,17 @@ describe('BaseBot', function() {
                 assert.equal(typeof route === 'function', true);
             });
             await BaseBotObject.managerTypeMessages(fakeResponse);
+        });
+    });
+    describe('#listenConversation', function() {
+
+        it('test listenConversation method', function() {
+            // Server.instance.post = function (name, cb) {
+            //
+            // }
+            // console.log(Server.instance);
+            let id =  BaseBotObject.listenConversation();
+            // assert.equal(id, randomId);
         });
     });
 });

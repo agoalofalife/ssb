@@ -72,7 +72,7 @@ module.exports = class BaseBot extends SlackBot {
      * @link https://api.slack.com/internal-integrations
      */
     listenConversation(Server) {
-        Server.instance.post('/conversation', (req, res) => {
+        Server.instance.app.post('/conversation', (req, res) => {
             // todo hmmm...if key which 'payload' will changed ??
             let conversation = new Conversation(JSON.parse(req.body.payload), this);
             let fnRoute = this.Route.route(conversation, this);
@@ -85,7 +85,7 @@ module.exports = class BaseBot extends SlackBot {
      * @link https://api.slack.com/slash-commands
      */
     listenCommands(Server) {
-        Server.instance.post('/commands', (req, res) => {
+        Server.instance.app.post('/commands', (req, res) => {
             let command = new Command(req.body, this);
             let fnRoute = this.Route.route(command, this);
 

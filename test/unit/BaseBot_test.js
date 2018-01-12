@@ -71,15 +71,17 @@ describe('BaseBot', function() {
             let uuid = faker.random.uuid();
             let server = {
                 instance :{
-                    post(route, cb) {
-                        assert.equal(typeof cb === 'function', true);
-                        assert.equal(route, '/conversation');
-                        cb.call(this, {
-                            body:{
-                                payload:'{"test":"test"}'
-                            }
-                        }, uuid)
-                    }
+                    app:{
+                        post(route, cb) {
+                            assert.equal(typeof cb === 'function', true);
+                            assert.equal(route, '/conversation');
+                            cb.call(this, {
+                                body:{
+                                    payload:'{"test":"test"}'
+                                }
+                            }, uuid)
+                        }
+                    },
                 }
             };
             BaseBotObject.on('conversation', (fnRoute, outuuid) => {
@@ -94,13 +96,15 @@ describe('BaseBot', function() {
             let uuid = faker.random.uuid();
             let server = {
                 instance :{
-                    post(route, cb) {
-                        assert.equal(typeof cb === 'function', true);
-                        assert.equal(route, '/commands');
-                        cb.call(this, {
-                            body:{}
-                        }, uuid)
-                    }
+                  app :{
+                      post(route, cb) {
+                          assert.equal(typeof cb === 'function', true);
+                          assert.equal(route, '/commands');
+                          cb.call(this, {
+                              body:{}
+                          }, uuid)
+                      }
+                  }
                 }
             };
             BaseBotObject.on('command', (fnRoute, outuuid) => {

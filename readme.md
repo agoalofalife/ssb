@@ -15,7 +15,7 @@ Short description :
 
 - [Requirement](#Requirement)
 - [Message](#Message)
-- [Conversation or Interactive](#Conversation or Interactive)
+- [Conversation or Interactive](#Conversation_or_Interactive)
 - [Console](#Console)
 
 <a name="Requirement"></a>
@@ -38,7 +38,7 @@ There are 4 main types:
 
 Those are 4 basic concepts, they are inherited from all other subtypes.
 
-<a name="Conversation or Interactive"></a>
+<a name="Conversation_or_Interactive"></a>
 ## Conversation or Interactive
 In [documentation](https://api.slack.com/interactive-messages) you can read more.
 

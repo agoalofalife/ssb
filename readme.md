@@ -56,7 +56,7 @@ It doesn't work with web-socket, but for you it will not be quite noticeable.
  
  Example `https://url/conversation`
  
- <img src="http://joxi.ru/4AkzPZvtMg0vD2">
+ <img src="http://dl4.joxi.net/drive/2018/01/13/0017/1804/1177356/56/e672fa7241.jpg">
  
 <a name="Console"></a>
 ## Console

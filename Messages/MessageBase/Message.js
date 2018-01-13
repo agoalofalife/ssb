@@ -1,4 +1,7 @@
-
+/**
+ *
+ * @type {module.Message}
+ */
 module.exports = class Message {
     /**
      *

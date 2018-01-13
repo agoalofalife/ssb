@@ -68,19 +68,6 @@ describe('DirectMessage', function() {
             assert.equal(DirectMessage.route(fakeResponse.message = ''), false);
         });
     });
-    describe('#reply', function() {
-        it('reply', async function() {
-            let result = await DirectMessageObject.reply(faker.lorem.word(), {});
-            assert.equal(result, randomFaker);
-        });
-    });
-    describe('#replyEphemeral', function() {
-        it('replyEphemeral', async function() {
-            let result = await DirectMessageObject.replyEphemeral(faker.lorem.word(), {});
-            assert.equal(result, randomFaker);
-        });
-    });
-
     describe('#patternMention', function() {
         it('exist function', function() {
             assert.equal(typeof  DirectMessageObject.patternMention === 'function', true);

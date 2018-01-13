@@ -59,12 +59,7 @@ describe('PrivateChannelOrMPDM', function() {
             assert.equal(PrivateChannelOrMPDM.route(fakeResponse.message = ''), false);
         });
     });
-    describe('#reply', function() {
-        it('reply', async function() {
-            let result = await PrivateChannelOrMPDMObject.reply(faker.lorem.word(), {});
-            assert.equal(result, randomFaker);
-        });
-    });
+
     describe('#patternMention', function() {
         it('exist function', function() {
             assert.equal(typeof  PrivateChannelOrMPDMObject.patternMention === 'function', true);

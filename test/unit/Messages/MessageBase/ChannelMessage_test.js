@@ -60,12 +60,6 @@ describe('ChannelMessage', function() {
             assert.equal(ChannelMessage.route(fakeResponse.message = ''), false);
         });
     });
-    describe('#reply', function() {
-        it('reply', async function() {
-            let result = await ChannelMessageObject.reply(faker.lorem.word(), {});
-            assert.equal(result, randomFaker);
-        });
-    });
     describe('#patternMention', function() {
         it('exist function', function() {
             assert.equal(typeof  ChannelMessageObject.patternMention === 'function', true);

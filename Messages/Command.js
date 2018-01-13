@@ -31,4 +31,12 @@ module.exports = class Command {
     get compareResponse(){
         return this.response.command;
     }
+
+    /**
+     * @link https://api.slack.com/slash-commands
+     * @return {boolean}
+     */
+    verify(){
+        return this.base.team.id === this.response.team_id && process.env.SLACK_VERIFICATION_TOKEN === this.response.token;
+    }
 };

@@ -4,11 +4,14 @@ const assert = require('assert');
 const ChannelMessage = require('./../../Messages/MessageBase/ChannelMessage');
 const PrivateChannelOrMPDM = require('./../../Messages/MessageBase/PrivateChannelOrMPDM');
 const sinon  = require('sinon');
-const Server = require('../../Server/Server');
+let team_id = faker.random.uuid();
+
 class FakeBaseBot extends BaseBotClass{
     constructor(params){
         super(params);
+        this.team = {id:team_id};
     }
+
     login(){}
     getUser(name, error){
         return new Promise((resolve, reject) => {
@@ -105,8 +108,7 @@ describe('BaseBot', function() {
         });
     });
     describe('#listenCommands', function() {
-        it('test listenCommands method', function() {
-            let uuid = faker.random.uuid();
+        it('test listenCommands method return status 401', function() {
             let server = {
                 instance :{
                   app :{
@@ -114,12 +116,40 @@ describe('BaseBot', function() {
                           assert.equal(typeof cb === 'function', true);
                           assert.equal(route, '/commands');
                           cb.call(this, {
-                              body:{}
-                          }, uuid)
+                              body:{
+                                  token:'',
+                                  team_id:team_id
+                              },
+                          }, {
+                              status:function (status) {
+                                  assert.equal(status, 401);
+                              }
+                          })
                       }
                   }
                 }
             };
+            BaseBotObject.parentListenCommands(server);
+        });
+        it('test listenCommands method return status 200', function() {
+            let uuid = faker.random.uuid();
+            let server = {
+                instance :{
+                    app :{
+                        post(route, cb) {
+                            assert.equal(typeof cb === 'function', true);
+                            assert.equal(route, '/commands');
+                            cb.call(this, {
+                                body:{
+                                    token:process.env.SLACK_VERIFICATION_TOKEN,
+                                    team_id:team_id
+                                },
+                            }, uuid)
+                        }
+                    }
+                }
+            };
+
             BaseBotObject.on('command', (fnRoute, outuuid) => {
                 assert.equal(uuid, outuuid);
                 assert.equal(typeof fnRoute === 'function', true);

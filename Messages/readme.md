@@ -16,4 +16,12 @@
     * descriptionEvent - description event (for cli)
          
    
-   
+### Interface Verification
+#### Description
+
+Optionally where required the verification of the request
+
+#### Methods
+
+- verify
+  

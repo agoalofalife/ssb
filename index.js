@@ -77,8 +77,9 @@ bot.on('conversation', async function (route, response) {
 });
 
 bot.on('command', async function (route, response) {
-    route('/start', function (responseInitiator, classConversation) {
-        console.log(responseInitiator);
-        response.end('ok');
+    route('/start', function (responseInitiator, classCommand) {
+        // console.log(responseInitiator);
+        console.log(classCommand.base.team.id);
+        response.end();
     });
 });

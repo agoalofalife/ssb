@@ -87,8 +87,10 @@ module.exports = class BaseBot extends SlackBot {
     listenCommands(Server) {
         Server.instance.app.post('/commands', (req, res) => {
             let command = new Command(req.body, this);
+            if (command.verify() === false){
+                return res.status(401);
+            }
             let fnRoute = this.Route.route(command, this);
-
             this.emit(command.typeEvent, fnRoute, res);
         });
     }

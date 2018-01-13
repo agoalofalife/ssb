@@ -58,11 +58,10 @@ It doesn't work with web-socket, but for you it will not be quite noticeable.
  
  <img src="http://dl4.joxi.net/drive/2018/01/13/0017/1804/1177356/56/e672fa7241.jpg">
  
- ```text
-    Note :
-    For testing you can use [ngrok](https://ngrok.com/).
-    He is create secure tunnel for your localhost.
-```
+   Note: For testing you can use [ngrok](https://ngrok.com/).
+   
+   He is create secure tunnel for your localhost.
+    
 <a name="Console"></a>
 ## Console
 #### List commands
@@ -75,4 +74,4 @@ It doesn't work with web-socket, but for you it will not be quite noticeable.
 
   Options:   
   * events - A list of all available events
-  
+   <img src="http://dl4.joxi.net/drive/2018/01/13/0017/1804/1177356/56/d5d1e58875.jpg">

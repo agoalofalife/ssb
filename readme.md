@@ -14,6 +14,7 @@ Short description :
 
 
 - [Requirement](#Requirement)
+- [Environment variables](Environment_variables)
 - [Message](#Message)
 - [Conversation or Interactive](#Conversation_or_Interactive)
 - [Slash Commands](#Slash_Commands)
@@ -24,6 +25,24 @@ Short description :
 ```text
 Node js version 9.3.0
 ```
+
+<a name="Environment_variables"></a>
+## Environment variables
+In the spirit `The Twelve-Factor App` all changing the configuration are set via environment variables.  
+
+You need file `.env` and add variable.
+
+##### List variable
+
+| Variable name            | Description                                                                            |   |
+|--------------------------|----------------------------------------------------------------------------------------|---|
+| SLACK_CLIENT_ID          | you can find inside of your application under "Basic Information" -> "App Credentials" |   |
+| SLACK_CLIENT_SECRET      | you can find inside of your application under "Basic Information" -> "App Credentials" |   |
+| SLACK_BOT_TOKEN          | Token you can get a temporary or passing authentication                                |   |
+| SLACK_BOT_NAME           | you can find inside of your application under "Bot User"                               |   |
+| SLACK_VERIFICATION_TOKEN | you can find inside of your application under "Basic Information" -> "App Credentials" |   |
+| PORT_SERVER              | PORT server for conversation and command                                               |   |
+
 
 <a name="Message"></a>
 ## Message

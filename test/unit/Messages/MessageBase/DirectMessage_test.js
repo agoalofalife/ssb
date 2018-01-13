@@ -16,8 +16,15 @@ let SlackBotFake = {
         });
 
     },
-    postMessage: () => {
-        return randomFaker;
+    postMessage() {
+        return new Promise(resolve => {
+            resolve(randomFaker)
+        })
+    },
+    postEphemeral(){
+        return new Promise(resolve => {
+            resolve(randomFaker)
+        })
     }
 };
 
@@ -67,6 +74,13 @@ describe('DirectMessage', function() {
             assert.equal(result, randomFaker);
         });
     });
+    describe('#replyEphemeral', function() {
+        it('replyEphemeral', async function() {
+            let result = await DirectMessageObject.replyEphemeral(faker.lorem.word(), {});
+            assert.equal(result, randomFaker);
+        });
+    });
+
     describe('#patternMention', function() {
         it('exist function', function() {
             assert.equal(typeof  DirectMessageObject.patternMention === 'function', true);

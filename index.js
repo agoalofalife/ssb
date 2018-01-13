@@ -15,7 +15,7 @@ const bot = new SlackBot({
  * @link https://slack.com/oauth/authorize?client_id=CLIENT_ID&scope=client+admin&redirect_uri=CALLBACK_URL
  * @help https://github.com/blaskovicz/cut-me-some-slack#creating-a-slack-access-token
  */
-let s = {
+let interactiveOptions = {
     "text": "Would you like to play a game?",
     "attachments": [
         {
@@ -57,10 +57,9 @@ let s = {
 /**
  * this is example
  */
-bot.on('message.im', async function (route, routeMention) {
-    route('hello', function (response, classMessage) {
-        // console.log(response)
-        classMessage.reply('hello', s);
+bot.on('message.channels', (route, routeMention) => {
+    route('hello', async function (response, classMessage) {
+        let res = await classMessage.reply('hello friend!');
     });
 
     // routeMention('allo', async function (response, classMessage) {
@@ -70,14 +69,14 @@ bot.on('message.im', async function (route, routeMention) {
     // });
 });
 
-bot.on('conversation', async function (route, response) {
+bot.on('conversation', async (route, response) => {
     route('welcome_button', function (responseInitiator, classConversation) {
         response.end('ok');
     });
 });
 
-bot.on('command', async function (route, response) {
-    route('/start', function (responseInitiator, classCommand) {
+bot.on('command', async (route, response) => {
+    route('/start', (responseInitiator, classCommand) => {
         // console.log(responseInitiator);
         console.log(classCommand.base.team.id);
         response.end();

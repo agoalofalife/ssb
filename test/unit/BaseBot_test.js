@@ -5,7 +5,7 @@ const ChannelMessage = require('./../../Messages/MessageBase/ChannelMessage');
 const PrivateChannelOrMPDM = require('./../../Messages/MessageBase/PrivateChannelOrMPDM');
 const sinon  = require('sinon');
 let team_id = faker.random.uuid();
-
+process.env.SLACK_VERIFICATION_TOKEN = faker.random.uuid();
 class FakeBaseBot extends BaseBotClass{
     constructor(params){
         super(params);

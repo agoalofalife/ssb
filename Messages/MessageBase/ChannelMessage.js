@@ -48,9 +48,21 @@ module.exports = mixin(MixinMention.prototype, ['constructor'])(class ChannelMes
     }
 
     async reply(message, params) {
-        let user = await this.base.getUserById(this.response.user);
-        if (user.name) {
-            return this.base.postMessage(user.name, message, params);
+        if (this.response.channel) {
+            return await this.base.postMessage(this.response.channel, message, params);
+        }
+    }
+
+    /**
+     * Post reply only the one who sent
+     * @link https://api.slack.com/methods/chat.postEphemeral
+     * @param message
+     * @param params
+     * @return {Promise<vow.Promise>}
+     */
+    async replyEphemeral(message, params) {
+        if (this.response.channel && this.response.user) {
+            return await this.base.postEphemeral(this.response.channel, this.response.user,  message, params);
         }
     }
 });

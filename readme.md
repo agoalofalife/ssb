@@ -1,10 +1,10 @@
 <h1 align="center">Slack Bot</h1>
 
 <p align="center">
- <a href="https://travis-ci.org/agoalofalife/slack-bot-loftschool-nodejs">
- <img src="https://travis-ci.org/agoalofalife/slack-bot-loftschool-nodejs.svg?branch=master"></a>
- <a href="https://codecov.io/gh/agoalofalife/slack-bot-loftschool-nodejs">
-   <img src="https://codecov.io/gh/agoalofalife/slack-bot-loftschool-nodejs/branch/master/graph/badge.svg" />
+ <a href="https://travis-ci.org/agoalofalife/ssb">
+ <img src="https://travis-ci.org/agoalofalife/ssb.svg?branch=master"></a>
+ <a href="https://codecov.io/gh/agoalofalife/ssb">
+   <img src="https://codecov.io/gh/agoalofalife/ssb/branch/master/graph/badge.svg" />
  </a>
  </p>
 

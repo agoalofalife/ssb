@@ -15,6 +15,7 @@ Short description :
 
 - [Requirement](#Requirement)
 - [Message](#Message)
+- [Conversation or Interactive](#Conversation or Interactive)
 - [Console](#Console)
 
 <a name="Requirement"></a>
@@ -37,8 +38,26 @@ There are 4 main types:
 
 Those are 4 basic concepts, they are inherited from all other subtypes.
 
+<a name="Conversation or Interactive"></a>
+## Conversation or Interactive
+In [documentation](https://api.slack.com/interactive-messages) you can read more.
 
+Short, interactive messages differ from ordinary messages.
 
+Interaction to push data in other url, which will choose in your app.
+
+It doesn't work with web-socket, but for you it will not be quite noticeable.
+
+##### Specify url
+ 
+ - You must go to your app 
+ - Next step : Features -> Interactive Components
+ - Insert our url
+ 
+ Example `https://url/conversation`
+ 
+ <img src="http://joxi.ru/4AkzPZvtMg0vD2">
+ 
 <a name="Console"></a>
 ## Console
 #### List commands

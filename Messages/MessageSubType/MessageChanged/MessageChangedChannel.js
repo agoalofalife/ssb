@@ -1,6 +1,6 @@
-const DirectMessage = require('../../MessageBase/DirectMessage');
+const ChannelMessage = require('../../MessageBase/ChannelMessage');
 
-module.exports = class MessageChangedChannel extends DirectMessage {
+module.exports = class MessageChangedChannel extends ChannelMessage {
 
     /**
      * @link https://api.slack.com/events/message.im

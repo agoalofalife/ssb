@@ -3,6 +3,7 @@ const DirectMessage = require('../Messages/MessageBase/DirectMessage');
 const ChannelMessage = require('../Messages/MessageBase/ChannelMessage');
 const PrivateChannelOrMPDM = require('../Messages/MessageBase/PrivateChannelOrMPDM');
 const MessageChangedDirect = require('../Messages/MessageSubType/MessageChanged/MessageChangedDirect');
+const MessageChangedChannel = require('../Messages/MessageSubType/MessageChanged/MessageChangedChannel');
 
 /**
  * Routes message
@@ -15,6 +16,7 @@ const routes = [
     PrivateChannelOrMPDM,
     // subtype
     MessageChangedDirect,
+    MessageChangedChannel,
 ];
 
 function router(message, baseBot) {

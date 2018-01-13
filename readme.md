@@ -25,6 +25,7 @@ We just want to add configuration and quick to develop, so go ahead!
 - [Conversation or Interactive](#Conversation_or_Interactive)
 - [Slash Commands](#Slash_Commands)
 - [Console](#Console)
+- [Tutorial on the use](#Tutorial_on_the_use)
 
 <a name="Requirement"></a>
 ## Requirement
@@ -90,6 +91,16 @@ It doesn't work with web-socket, but for you it will not be quite noticeable.
    
    He is create secure tunnel for your localhost.
     
+```javascript
+// listen event 'conversation'
+// in route we need to pass 'callback_id'
+bot.on('conversation', async (route, response) => {
+    // responseInitiator json which is refundable after the reaction
+    route('welcome_button', function (responseInitiator, classConversation) {
+        response.end('ok');
+    });
+});
+```    
 <a name="Slash_Commands"></a>
 ## Slash Commands
 [Read more](https://api.slack.com/slash-commands)
@@ -106,7 +117,15 @@ They have separete url and not working with web-socket.
  <img src="http://dl3.joxi.net/drive/2018/01/13/0017/1804/1177356/56/cc4b230b47.jpg">
  
  When a request comes in, it checks team_id and token verification, if not checked return response code `401`.
-  
+ 
+```javascript
+// listen event 'command'
+bot.on('command', async (route, response) => {
+    route('/start', (responseInitiator, classCommand) => {
+        response.end();
+    });
+});
+```
 <a name="Console"></a>
 ## Console
 #### List commands
@@ -122,3 +141,43 @@ They have separete url and not working with web-socket.
   
   <p align="center"><img src="http://dl4.joxi.net/drive/2018/01/13/0017/1804/1177356/56/d5d1e58875.jpg"></p>
    
+
+<a name="Tutorial_on_the_use"></a>
+## Tutorial on the use
+
+##### Start 
+```javascript
+// include env variables
+require('dotenv').config();
+// require package
+const SlackBot = require('./BaseBot');
+// pass name and token bot
+const bot = new SlackBot({
+    token: process.env.SLACK_BOT_TOKEN,
+    name: process.env.SLACK_BOT_NAME,
+});
+```
+##### Listen event 
+
+```javascript
+// first argument pass type event 
+// list event you can watch using the command : show events
+
+// second callback where two arguments:
+// - object Route for match regexp or string
+// - object Route for match regexp or string if the message mentioned our bot
+
+bot.on('message.channels', (route, routeMention) => {
+    route(/hello|hi/gi, async function (response, classMessage) {
+        // reply - it means sending in response
+        let res = await classMessage.reply('hello friend!');
+    });
+
+     routeMention('hello', async function (response, classMessage) {
+         // the message will be visible only to the sender
+         classMessage.replyEphemeral('hello', {
+             icon_emoji: ':piggy:'
+         });
+     });
+});
+```

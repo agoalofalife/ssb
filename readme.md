@@ -13,10 +13,15 @@ Short description :
 ....
 
 
-
+- [Requirement](#Requirement)
 - [Message](#Message)
+- [Console](#Console)
 
-
+<a name="Requirement"></a>
+## Requirement
+```text
+Node js version 9.3.0
+```
 
 <a name="Message"></a>
 ## Message
@@ -32,3 +37,18 @@ There are 4 main types:
 
 Those are 4 basic concepts, they are inherited from all other subtypes.
 
+
+
+<a name="Console"></a>
+## Console
+#### List commands
+- server
+
+   Options 
+   * start - Start server
+   
+- show
+
+  Options:   
+  * events - A list of all available events
+  

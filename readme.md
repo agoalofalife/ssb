@@ -30,6 +30,7 @@ We just want to add configuration and quick to develop, so go ahead!
 ## Requirement
 ```text
 Node js version 9.3.0
+The app is under development(WIP)
 ```
 
 <a name="Environment_variables"></a>

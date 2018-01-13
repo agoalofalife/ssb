@@ -20,7 +20,7 @@ module.exports = class Server {
      * @param enforcer
      */
     constructor(enforcer){
-        if(enforcer !== singletonEnforcer) throw "Cannot construct singleton";
+        if(enforcer !== singletonEnforcer) throw new Error("Cannot construct singleton");
 
         // singleton server
         let port = process.env.PORT_SERVER || 9000;

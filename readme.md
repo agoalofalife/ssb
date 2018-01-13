@@ -9,8 +9,14 @@
  </p>
 
 
-Short description :
-....
+### Short description :
+The basic idea of the platform, to create a complete tool to work with bots in the environment slack.
+
+Usually we do not want to disassemble authentication, application architecture and implementation for various protocols.
+
+We just want to add configuration and quick to develop, so go ahead!
+
+
 
 
 - [Requirement](#Requirement)
@@ -30,9 +36,9 @@ Node js version 9.3.0
 ## Environment variables
 In the spirit [The Twelve-Factor App](https://12factor.net) all changing the configuration are set via environment variables.  
 
-You need file `.env` and add variable.
+You need create file `.env` in your directory and add variables.
 
-##### List variable
+#### List variables
 
 | Variable name            | Description                                                                            |
 |--------------------------|----------------------------------------------------------------------------------------|

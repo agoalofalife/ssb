@@ -1,4 +1,4 @@
-<h1 align="center">Slack Bot</h1>
+<h1 align="center">(SSB) Super Slack Bot</h1>
 
 <p align="center">
  <a href="https://travis-ci.org/agoalofalife/ssb">

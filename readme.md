@@ -28,7 +28,7 @@ Node js version 9.3.0
 
 <a name="Environment_variables"></a>
 ## Environment variables
-In the spirit `The Twelve-Factor App` all changing the configuration are set via environment variables.  
+In the spirit [The Twelve-Factor App](https://12factor.net) all changing the configuration are set via environment variables.  
 
 You need file `.env` and add variable.
 

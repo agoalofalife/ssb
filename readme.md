@@ -16,6 +16,7 @@ Short description :
 - [Requirement](#Requirement)
 - [Message](#Message)
 - [Conversation or Interactive](#Conversation_or_Interactive)
+- [Slash Commands](#Slash_Commands)
 - [Console](#Console)
 
 <a name="Requirement"></a>
@@ -52,7 +53,7 @@ It doesn't work with web-socket, but for you it will not be quite noticeable.
  
  - You must go to your app 
  - Next step : Features -> Interactive Components
- - Insert our url
+ - Insert your url
  
  Example `https://url/conversation`
  
@@ -62,6 +63,18 @@ It doesn't work with web-socket, but for you it will not be quite noticeable.
    
    He is create secure tunnel for your localhost.
     
+<a name="Slash_Commands"></a>
+## Slash Commands
+[Read more](https://api.slack.com/slash-commands)
+
+##### Specify url
+ 
+ - You must go to your app 
+ - Next step : Features -> Slash Commands
+ - Create new command and insert your url with prefix `/commands`
+ 
+ <img src="http://dl3.joxi.net/drive/2018/01/13/0017/1804/1177356/56/cc4b230b47.jpg">
+ 
 <a name="Console"></a>
 ## Console
 #### List commands

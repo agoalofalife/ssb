@@ -2,7 +2,7 @@ require('../helper');
 const DirectMessage = require('../Messages/MessageBase/DirectMessage');
 const ChannelMessage = require('../Messages/MessageBase/ChannelMessage');
 const PrivateChannelOrMPDM = require('../Messages/MessageBase/PrivateChannelOrMPDM');
-const MessageChangedDirect = require('../Messages/MessageSubType/MessageChangedDirect');
+const MessageChangedDirect = require('../Messages/MessageSubType/MessageChanged/MessageChangedDirect');
 
 /**
  * Routes message

@@ -1,4 +1,4 @@
-const DirectMessage = require('../MessageBase/DirectMessage');
+const DirectMessage = require('../../MessageBase/DirectMessage');
 
 module.exports = class MessageChangedDirect extends DirectMessage {
 

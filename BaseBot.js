@@ -39,7 +39,7 @@ module.exports = class BaseBot extends SlackBot {
                     this.botId = user.id;
                     return user.id;
                 } catch (err) {
-                    console.log('Error name slack bot!');
+                    console.log('Error name slack bot!'.error);
                 }
             }
         }.bind(this)();

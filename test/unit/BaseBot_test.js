@@ -3,15 +3,18 @@ const faker = require('faker');
 const assert = require('assert');
 const ChannelMessage = require('./../../Messages/MessageBase/ChannelMessage');
 const PrivateChannelOrMPDM = require('./../../Messages/MessageBase/PrivateChannelOrMPDM');
-
+const sinon  = require('sinon');
 const Server = require('../../Server/Server');
 class FakeBaseBot extends BaseBotClass{
     constructor(params){
         super(params);
     }
     login(){}
-    getUser(name){
-        return new Promise(resolve => {
+    getUser(name, error){
+        return new Promise((resolve, reject) => {
+            if (name === 'error'){
+                reject();
+            }
           resolve({
              id:randomId
             });
@@ -48,6 +51,16 @@ describe('BaseBot', function() {
             // get cache
             let idCache = await BaseBotObject.getBotId();
             assert.equal(id, idCache);
+        });
+    });
+    describe('#botId return error getUser function', function() {
+        it('return error in out console.log()', async function() {
+            const BaseBotObject = new FakeBaseBot({token:'token', name:'error'});
+
+            let spy = sinon.spy(console, 'log');
+            await BaseBotObject.getBotId();
+            assert(spy.calledWith('Error name slack bot!'.error));
+            spy.restore();
         });
     });
     describe('#managerTypeMessages', function() {

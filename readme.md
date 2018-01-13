@@ -74,4 +74,6 @@ It doesn't work with web-socket, but for you it will not be quite noticeable.
 
   Options:   
   * events - A list of all available events
-   <img src="http://dl4.joxi.net/drive/2018/01/13/0017/1804/1177356/56/d5d1e58875.jpg">
+  
+  <p align="center"><img src="http://dl4.joxi.net/drive/2018/01/13/0017/1804/1177356/56/d5d1e58875.jpg"></p>
+   

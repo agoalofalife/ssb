@@ -75,6 +75,10 @@ module.exports = class BaseBot extends SlackBot {
         Server.instance.app.post('/conversation', (req, res) => {
             // todo hmmm...if key which 'payload' will changed ??
             let conversation = new Conversation(JSON.parse(req.body.payload), this);
+            // todo most likely rewrite in each message interface
+            if (conversation.verify() === false){
+                return res.status(401);
+            }
             let fnRoute = this.Route.route(conversation, this);
 
             this.emit(conversation.typeEvent, fnRoute, res);

@@ -2,9 +2,12 @@ const assert = require('assert');
 const Conversation = require('./../../../Messages/Conversation');
 const faker = require('faker');
 
-let SlackBotFake = {};
+let SlackBotFake = {
+
+};
 let fakeResponse = {
-    callback_id:faker.random.uuid()
+    callback_id:faker.random.uuid(),
+    token:process.env.SLACK_VERIFICATION_TOKEN
 };
 
 let conversationObject = new Conversation(fakeResponse, SlackBotFake);
@@ -24,6 +27,12 @@ describe('Conversation', function() {
     describe('#compareResponse', function() {
         it('get text from response callback_id', function() {
             assert.equal(conversationObject.compareResponse, fakeResponse.callback_id);
+        });
+    });
+
+    describe('#verify', function() {
+        it('verify method', function() {
+            assert.equal(conversationObject.verify(), true);
         });
     });
 });

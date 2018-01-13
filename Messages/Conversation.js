@@ -31,4 +31,12 @@ module.exports = class Conversation {
     get compareResponse(){
         return this.response.callback_id;
     }
+
+    /**
+     * @link https://api.slack.com/slash-commands
+     * @return {boolean}
+     */
+    verify(){
+        return process.env.SLACK_VERIFICATION_TOKEN === this.response.token;
+    }
 };

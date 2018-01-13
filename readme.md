@@ -105,6 +105,8 @@ They have separete url and not working with web-socket.
  
  <img src="http://dl3.joxi.net/drive/2018/01/13/0017/1804/1177356/56/cc4b230b47.jpg">
  
+ When a request comes in, it checks team_id and token verification, if not checked return response code `401`.
+  
 <a name="Console"></a>
 ## Console
 #### List commands

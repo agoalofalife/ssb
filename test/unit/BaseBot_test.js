@@ -83,7 +83,7 @@ describe('BaseBot', function() {
         });
     });
     describe('#listenConversation', function() {
-        it('test listenConversation method', function() {
+        it('return 401 after fail verify', function() {
             let uuid = faker.random.uuid();
             let server = {
                 instance :{
@@ -93,7 +93,35 @@ describe('BaseBot', function() {
                             assert.equal(route, '/conversation');
                             cb.call(this, {
                                 body:{
+                                    token:uuid,
                                     payload:'{"test":"test"}'
+                                }
+                            },  {
+                                status:function (status) {
+                                    assert.equal(status, 401);
+                                }
+                            })
+                        }
+                    },
+                }
+            };
+            // BaseBotObject.on('conversation', (fnRoute, outuuid) => {
+            //     assert.equal(uuid, outuuid);
+            //     assert.equal(typeof fnRoute === 'function', true);
+            // });
+            BaseBotObject.parentListenConversation(server);
+        });
+        it('return 200 after success verify', function() {
+            let uuid = faker.random.uuid();
+            let server = {
+                instance :{
+                    app:{
+                        post(route, cb) {
+                            assert.equal(typeof cb === 'function', true);
+                            assert.equal(route, '/conversation');
+                            cb.call(this, {
+                                body:{
+                                    payload:`{"token":"${process.env.SLACK_VERIFICATION_TOKEN}"}`
                                 }
                             }, uuid)
                         }

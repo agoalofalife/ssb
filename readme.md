@@ -67,6 +67,9 @@ It doesn't work with web-socket, but for you it will not be quite noticeable.
 ## Slash Commands
 [Read more](https://api.slack.com/slash-commands)
 
+Commands are very similar to conversation.
+
+They have separete url and not working with web-socket.
 ##### Specify url
  
  - You must go to your app 

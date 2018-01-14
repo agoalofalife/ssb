@@ -37,9 +37,10 @@ module.exports = mixin(MixinMention.prototype, ['constructor'])(class PrivateCha
      * @return {boolean}
      */
     static route(comparable) {
-        return comparable.type === 'message' &&
-            comparable.subtype === undefined &&
-            comparable.channel !== undefined && comparable.channel.charAt(0) === this.firstLetter();
+        // return comparable.type === 'message' &&
+        //     comparable.subtype === undefined &&
+        //     comparable.channel !== undefined && comparable.channel.charAt(0) === this.firstLetter();
+        return false;
     }
 });
 

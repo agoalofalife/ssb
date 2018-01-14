@@ -12,7 +12,7 @@ module.exports = class BaseBot extends SlackBot {
      *
      * @param params
      */
-    constructor(params) {
+     constructor(params) {
         super(params);
         this.on('message', this.managerTypeMessages);
 
@@ -50,7 +50,7 @@ module.exports = class BaseBot extends SlackBot {
      * @param message object
      */
     async managerTypeMessages(message) {
-        let classMessage = router(message, this);
+        let classMessage = await router(message, this);
 
         // if route found
         if (classMessage && classMessage !== null) {

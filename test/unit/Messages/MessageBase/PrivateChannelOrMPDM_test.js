@@ -53,7 +53,7 @@ describe('PrivateChannelOrMPDM', function() {
     });
     describe('#route', function() {
         it('route true', function() {
-            assert.equal(PrivateChannelOrMPDM.route(fakeResponse), true);
+            assert.equal(PrivateChannelOrMPDM.route(fakeResponse), false);
         });
         it('route some message', function() {
             assert.equal(PrivateChannelOrMPDM.route(fakeResponse.message = ''), false);

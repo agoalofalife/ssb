@@ -57,7 +57,7 @@ let interactiveOptions = {
 /**
  * this is example
  */
-bot.on('message_changed.message.channels', (route, routeMention) => {
+bot.on('message.groups', (route, routeMention) => {
     route(/hello|hi/gi, async function (response, classMessage) {
         let res = await classMessage.reply('hello friend!');
     });

@@ -6,7 +6,6 @@ require('console.table');
 const util = require('util');
 const program = require('commander');
 const { version } = require('../helper');
-const {routes} = require('../route/routes');
 const glob = require('glob');
 const path = require('path');
 const Server = require('../Server/Server');

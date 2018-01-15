@@ -34,8 +34,7 @@ module.exports = class BufferDriverCache{
      * @return {*}
      */
     save(key, value){
-        this.buffer[key] = value;
-        return this.buffer[key];
+        return this.buffer[key] = value;
     }
 
     /**

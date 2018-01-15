@@ -13,7 +13,8 @@ module.exports = class Cache {
     route(message, driverCache, callback, ...paramsCallback){
         let cache = driverCache.get(message.channel);
         if (cache === undefined) {
-            return callback.apply(this, paramsCallback);
+            // console.log( callback.apply(this, paramsCallback) );
+            return driverCache.save(message.channel, callback.apply(this, paramsCallback));
         }
         // get cache
         return cache;

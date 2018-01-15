@@ -1,6 +1,8 @@
 const assert = require('assert');
 const PrivateChannelMessage = require('./../../../../Messages/MessageBase/PrivateChannelMessage');
+const BaseBot = require('./../../../../BaseBot');
 const faker = require('faker');
+const sinon = require('sinon');
 
 let randomFaker = faker.random.uuid();
 
@@ -57,6 +59,12 @@ describe('PrivateChannelMessage', function() {
         });
         it('route some message', async function() {
             assert.equal(await PrivateChannelMessage.route(fakeResponse.message = ''), false);
+        });
+        it('route return group id', async function() {
+            let isMatch = await PrivateChannelMessage.route(fakeResponse, {
+                getGroupById:sinon.stub().returns(42)
+            });
+            assert.equal(isMatch, false);
         });
     });
 });

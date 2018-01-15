@@ -1,4 +1,3 @@
-require('../helper');
 const DirectMessage = require('../Messages/MessageBase/DirectMessage');
 const ChannelMessage = require('../Messages/MessageBase/ChannelMessage');
 const PrivateChannelOrMPDM = require('../Messages/MessageBase/PrivateChannelOrMPDM');

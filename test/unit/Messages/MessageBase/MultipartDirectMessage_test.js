@@ -1,5 +1,6 @@
 const assert = require('assert');
-const PrivateChannelMessage = require('./../../../../Messages/MessageBase/PrivateChannelMessage');
+const MultipartDirectMessage = require('./../../../../Messages/MessageBase/MultipartDirectMessage');
+const BaseBot = require('./../../../../BaseBot');
 const faker = require('faker');
 const sinon = require('sinon');
 
@@ -24,44 +25,44 @@ let fakeResponse = {
     user:faker.name.firstName,
     type:'message',
     text:faker.lorem.text(),
-    channel:`${PrivateChannelMessage.firstLetter()}${faker.random.number()}`,
+    channel:`${MultipartDirectMessage.firstLetter()}${faker.random.number()}`,
 
 };
 
-let PrivateChannelMessageObject = new PrivateChannelMessage(fakeResponse, SlackBotFake);
+let MultipartDirectMessageObject = new MultipartDirectMessage(fakeResponse, SlackBotFake);
 
 describe('PrivateChannelMessage', function() {
     describe('#typeEvent', function() {
         it('exist property typeEvent and return string type', function() {
-            assert.deepEqual(PrivateChannelMessageObject.typeEvent, 'message.groups');
+            assert.deepEqual(MultipartDirectMessageObject.typeEvent, 'message.mpim');
         });
     });
     describe('#descriptionEvent', function() {
         it('equal description', function() {
-            assert.equal(PrivateChannelMessageObject.descriptionEvent, 'The event occurs when a message arrives in private channel');
+            assert.equal(MultipartDirectMessageObject.descriptionEvent, 'The event occurs when a message arrives in multi direct-group');
         });
     });
 
     describe('#firstLetter', function() {
         it('exist method firstLetter and return string letter `G`', function() {
-            assert.equal(PrivateChannelMessage.firstLetter(), 'G');
+            assert.equal(MultipartDirectMessage.firstLetter(), 'G');
         });
     });
     describe('#compareResponse', function() {
         it('get text from response', function() {
-            assert.equal(PrivateChannelMessageObject.compareResponse, fakeResponse.text);
+            assert.equal(MultipartDirectMessageObject.compareResponse, fakeResponse.text);
         });
     });
     describe('#route', function() {
         it('route true', async function() {
-            assert.equal(await PrivateChannelMessage.route(fakeResponse), false);
+            assert.equal(await MultipartDirectMessage.route(fakeResponse), false);
         });
         it('route some message', async function() {
-            assert.equal(await PrivateChannelMessage.route(fakeResponse.message = ''), false);
+            assert.equal(await MultipartDirectMessage.route(fakeResponse.message = ''), false);
         });
         it('route return group id', async function() {
-            let isMatch = await PrivateChannelMessage.route(fakeResponse, {
-                getGroupPrivateChannelById:sinon.stub().returns(42)
+            let isMatch = await MultipartDirectMessage.route(fakeResponse, {
+                getGroupMultiDirectById:sinon.stub().returns(42)
             });
             assert.equal(isMatch, false);
         });

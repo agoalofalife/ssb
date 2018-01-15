@@ -6,6 +6,7 @@ const RouteClass = require('./route/Route');
 const Server = require('./Server/Server');
 const Conversation = require('./Messages/Conversation');
 const Command = require('./Messages/Command');
+const _ = require('lodash');
 
 module.exports = class BaseBot extends SlackBot {
     /**
@@ -23,6 +24,28 @@ module.exports = class BaseBot extends SlackBot {
         // server processes run listen..
         this.listenConversation(Server);
         this.listenCommands(Server);
+    }
+
+    /**
+     * Get group by id which is private channel
+     * @param {string} id
+     * @returns {object}
+     */
+    async getGroupPrivateChannelById(id) {
+        if (id === undefined) return id;
+        let data = await this.getGroups();
+        return _.find(data.groups, {id: id, is_mpim: false})
+    }
+
+    /**
+     * Get group by id which is multi direct
+     * @param {string} id
+     * @returns {object}
+     */
+    async getGroupMultiDirectById(id) {
+        if (id === undefined) return id;
+        let data = await this.getGroups();
+        return _.find(data.groups, {id: id, is_mpim: true})
     }
 
     /**

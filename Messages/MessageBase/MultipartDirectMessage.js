@@ -2,7 +2,7 @@ const mixin = require('../../helper').mixin;
 const MixinMention = require('../Mixins/Mention');
 const Message = require('./Message');
 
-module.exports = mixin(MixinMention.prototype, ['constructor'])(class PrivateChannelMessage extends Message{
+module.exports = mixin(MixinMention.prototype, ['constructor'])(class MultipartDirectMessage extends Message{
     /**
      *
      * @return {string}
@@ -15,7 +15,7 @@ module.exports = mixin(MixinMention.prototype, ['constructor'])(class PrivateCha
      * @return {string} || {array}
      */
     get typeEvent() {
-        return 'message.groups';
+        return 'message.mpim';
     }
 
     /**
@@ -23,7 +23,7 @@ module.exports = mixin(MixinMention.prototype, ['constructor'])(class PrivateCha
      * @return {string}
      */
     get descriptionEvent() {
-        return 'The event occurs when a message arrives in private channel';
+        return 'The event occurs when a message arrives in multi direct-group';
     }
 
     get compareResponse(){
@@ -33,12 +33,12 @@ module.exports = mixin(MixinMention.prototype, ['constructor'])(class PrivateCha
     /**
      * check route
      * @param comparable
-     * @param base SlackBot class
+     * @param base
      * @return {boolean}
      */
     static async route(comparable, base) {
         try{
-            let group = await base.getGroupPrivateChannelById(comparable.channel);
+            let group = await base.getGroupMultiDirectById(comparable.channel);
 
             return comparable.type === 'message' &&
                 comparable.subtype === undefined &&

@@ -26,6 +26,23 @@ module.exports = class Message {
     }
 
     /**
+     * Reply to in thread
+     * todo while this is a temporary stub
+     * @deprecated
+     * @link https://api.slack.com/docs/message-threading
+     * @param message
+     * @param params
+     * @return {Promise<*>}
+     */
+    async replyInThread(message, params) {
+        if (this.response.channel) {
+            return await this.base.postMessage(this.response.channel, message, Object.assign({
+                thread_ts:this.response.ts
+            }, params));
+        }
+    }
+
+    /**
      * Post reply only the one who sent
      * @link https://api.slack.com/methods/chat.postEphemeral
      * @param message

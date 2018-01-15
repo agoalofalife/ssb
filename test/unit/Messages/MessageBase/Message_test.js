@@ -45,6 +45,13 @@ describe('Message', function() {
             assert.equal(result, randomFaker);
         });
     });
+    describe('#replyInThread', function() {
+        it('reply', async function() {
+            let result = await MessageObject.replyInThread(faker.lorem.word(), {});
+            assert.equal(result, randomFaker);
+        });
+    });
+
     describe('#replyEphemeral', function() {
         it('replyEphemeral', async function() {
             let result = await MessageObject.replyEphemeral(faker.lorem.word(), {});

@@ -1,6 +1,5 @@
 const DirectMessage = require('../Messages/MessageBase/DirectMessage');
 const ChannelMessage = require('../Messages/MessageBase/ChannelMessage');
-const PrivateChannelOrMPDM = require('../Messages/MessageBase/PrivateChannelOrMPDM');
 const MessageChangedDirect = require('../Messages/MessageSubType/MessageChanged/MessageChangedDirect');
 const MessageChangedChannel = require('../Messages/MessageSubType/MessageChanged/MessageChangedChannel');
 const PrivateChannelMessage = require('../Messages/MessageBase/PrivateChannelMessage');
@@ -16,7 +15,6 @@ const routes = [
     ChannelMessage,
     PrivateChannelMessage,
     MultipartDirectMessage,
-    // PrivateChannelOrMPDM,
     // subtype
     MessageChangedDirect,
     MessageChangedChannel,

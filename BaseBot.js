@@ -81,14 +81,7 @@ module.exports = class BaseBot extends SlackBot {
             let fnRoute = this.Route.route(classMessage, this);
             let fnRouteMention = await this.Route.routeMention(classMessage, this);
 
-            // todo after determine PrivateChannelOrMPDM class this is remove
-            if (Array.isArray(classMessage.typeEvent)) {
-                classMessage.typeEvent.forEach((nameEvent) => {
-                    this.emit(nameEvent, fnRoute, fnRouteMention);
-                })
-            } else {
-                this.emit(classMessage.typeEvent, fnRoute, fnRouteMention);
-            }
+            this.emit(classMessage.typeEvent, fnRoute, fnRouteMention);
         }
     }
 

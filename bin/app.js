@@ -58,19 +58,10 @@ program
                         let events = objectMessage.typeEvent;
                         let description = objectMessage.descriptionEvent;
 
-                        if (Array.isArray(events)) {
-                            events.forEach((event) => {
-                                out.push({
-                                    event:event.verbose,
-                                    description:description.verbose,
-                                });
-                            })
-                        } else {
-                            out.push({
-                                event:events.verbose,
-                                description:description.verbose,
-                            });
-                        }
+                        out.push({
+                            event:events.verbose,
+                            description:description.verbose,
+                        });
                     });
                 return console.table('List events', out);
             default:

@@ -2,7 +2,7 @@ const BaseBotClass = require('../../BaseBot');
 const faker = require('faker');
 const assert = require('assert');
 const ChannelMessage = require('./../../Messages/MessageBase/ChannelMessage');
-const PrivateChannelOrMPDM = require('./../../Messages/MessageBase/PrivateChannelOrMPDM');
+const MultipartDirectMessage = require('./../../Messages/MessageBase/MultipartDirectMessage');
 const sinon  = require('sinon');
 let team_id = faker.random.uuid();
 process.env.SLACK_VERIFICATION_TOKEN = faker.random.uuid();
@@ -66,6 +66,48 @@ describe('BaseBot', function() {
             spy.restore();
         });
     });
+    describe('#getGroupPrivateChannelById', function() {
+        before(function() {
+            const BaseBotObject = new FakeBaseBot({token:'token', name:'error'});
+        });
+        it('return undefined if argument undefined', async function() {
+            assert.equal(await BaseBotObject.getGroupPrivateChannelById(), undefined);
+        });
+        it('return object if parameters match', async function() {
+            let id = faker.random.uuid();
+            BaseBotObject.getGroups = function () {
+              return Promise.resolve({
+                  groups : [{
+                      id:id,
+                      is_mpim:false
+                  }]
+              })
+            };
+            let isMatch = await BaseBotObject.getGroupPrivateChannelById(id);
+            assert.equal(isMatch.id, id);
+        });
+    });
+    describe('#getGroupMultiDirectById', function() {
+        before(function() {
+            const BaseBotObject = new FakeBaseBot({token:'token', name:'error'});
+        });
+        it('return undefined if argument undefined', async function() {
+            assert.equal(await BaseBotObject.getGroupMultiDirectById(), undefined);
+        });
+        it('return object if parameters match', async function() {
+            let id = faker.random.uuid();
+            BaseBotObject.getGroups = function () {
+                return Promise.resolve({
+                    groups : [{
+                        id:id,
+                        is_mpim:true
+                    }]
+                })
+            };
+            let isMatch = await BaseBotObject.getGroupMultiDirectById(id);
+            assert.equal(isMatch.id, id);
+        });
+    });
     describe('#managerTypeMessages', function() {
         it('standart', async function() {
             BaseBotObject.on('message.channels', function (route) {
@@ -74,7 +116,7 @@ describe('BaseBot', function() {
             await BaseBotObject.managerTypeMessages(fakeResponse);
         });
         it('id type event array', async function() {
-            fakeResponse.channel = `${PrivateChannelOrMPDM.firstLetter()}${faker.random.number()}`;
+            fakeResponse.channel = `${MultipartDirectMessage.firstLetter()}${faker.random.number()}`;
             // get type event from PrivateChannelOrMPDM object and random
             BaseBotObject.on('message.mpim', function (route) {
                 assert.equal(typeof route === 'function', true);

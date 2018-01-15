@@ -168,6 +168,8 @@ const bot = new SlackBot({
 // - object Route for match regexp or string if the message mentioned our bot
 
 bot.on('message.channels', (route, routeMention) => {
+    // route can take type Regexp and type String
+    // if type string then expected full match
     route(/hello|hi/gi, async function (response, classMessage) {
         // reply - it means sending in response
         let res = await classMessage.reply('hello friend!');

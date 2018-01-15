@@ -8,9 +8,6 @@ const bot = new SlackBot({
 });
 
 /**
- * help to determine type message
- * @link https://stackoverflow.com/questions/41111227/how-can-a-slack-bot-detect-a-direct-message-vs-a-message-in-a-channel
- *
  * auth magic token
  * @link https://slack.com/oauth/authorize?client_id=CLIENT_ID&scope=client+admin&redirect_uri=CALLBACK_URL
  * @help https://github.com/blaskovicz/cut-me-some-slack#creating-a-slack-access-token

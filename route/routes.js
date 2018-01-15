@@ -12,20 +12,32 @@ const PrivateChannelMessage = require('../Messages/MessageBase/PrivateChannelMes
  * @type {{}}
  */
 const routes = [
-    // DirectMessage,
-    // ChannelMessage,
+    DirectMessage,
+    ChannelMessage,
     PrivateChannelMessage,
-    // PrivateChannelOrMPDM,
+    PrivateChannelOrMPDM,
     // subtype
-    // MessageChangedDirect,
-    // MessageChangedChannel,
+    MessageChangedDirect,
+    MessageChangedChannel,
 ];
 
-function router(message, baseBot) {
-    return routes.mapIfNotNull(async typeMessage => {
-        return await typeMessage.route(message, baseBot) ? new typeMessage(message, baseBot) : null;
-    }).shift();
+/**
+ * Determines the appropriate route
+ * After the first match, the search stops
+ * It's a linear search
+ * @param message
+ * @param baseBot
+ * @return {Promise<*>}
+ */
+async function router(message, baseBot) {
+    for(let typeMessage of routes) {
+        if(await typeMessage.route(message, baseBot)){
+         return new typeMessage(message, baseBot)
+        }
+    }
+    return null;
 }
+
 // check all routes and return concrete type
 // return only first match
 module.exports = {

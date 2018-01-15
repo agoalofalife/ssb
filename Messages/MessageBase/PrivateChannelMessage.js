@@ -37,12 +37,15 @@ module.exports = mixin(MixinMention.prototype, ['constructor'])(class PrivateCha
      * @return {boolean}
      */
     static async route(comparable, base) {
-        let group = await base.getGroupById(comparable.channel);
-        // console.log( comparable.channel, 'group' );
-        return comparable.type === 'message' &&
-            comparable.subtype === undefined &&
-            comparable.channel !== undefined && comparable.channel.charAt(0) === this.firstLetter()
-            && group && group.id === comparable.channel;
+        try{
+            let group = await base.getGroupById(comparable.channel);
+            return comparable.type === 'message' &&
+                comparable.subtype === undefined &&
+                comparable.channel !== undefined && comparable.channel.charAt(0) === this.firstLetter()
+                && group !== undefined && group.id === comparable.channel;
+        }catch (error){
+            return false;
+        }
     }
 });
 

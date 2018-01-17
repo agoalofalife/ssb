@@ -50,8 +50,8 @@ module.exports = class Message {
      * @return {Promise<vow.Promise>}
      */
     async replyEphemeral(message, params) {
-        if (this.response.channel && this.response.user) {
-            return await this.base.postEphemeral(this.response.channel, this.response.user,  message, params);
+        if (this.response.channel && (this.response.user || this.response.message.user)) {
+            return await this.base.postEphemeral(this.response.channel, this.response.user || this.response.message.user,  message, params);
         }
     }
-}
+};

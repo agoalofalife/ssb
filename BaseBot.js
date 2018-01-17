@@ -75,8 +75,9 @@ module.exports = class BaseBot extends SlackBot {
      * @param message object
      */
     async managerTypeMessages(message) {
-        let classMessage = await (new Cache).route(message, (new BufferDriverCache), router, message, this);
-
+        console.log( message );
+        // let classMessage = await (new Cache).route(message, (new BufferDriverCache), router, message, this);
+        let classMessage = await router(message, this);
         // if route found
         if (classMessage && classMessage !== null) {
 

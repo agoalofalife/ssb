@@ -3,9 +3,6 @@
  * @type {module.BufferDriverCache}
  */
 module.exports = class BufferDriverCache{
-
-    // todo there is one question
-    // todo do I need to send the key designer not to duplicate other methods?
     constructor(){
         this.buffer = {};
     }

@@ -7,6 +7,8 @@ const Server = require('./Server/Server');
 const Conversation = require('./Messages/Conversation');
 const Command = require('./Messages/Command');
 const _ = require('lodash');
+const Cache = require('./Cache/Cache');
+const BufferDriverCache = require('./Cache/Drivers/BufferDriverCache');
 
 module.exports = class BaseBot extends SlackBot {
     /**
@@ -73,7 +75,7 @@ module.exports = class BaseBot extends SlackBot {
      * @param message object
      */
     async managerTypeMessages(message) {
-        let classMessage = await router(message, this);
+        let classMessage = await (new Cache).route(message, (new BufferDriverCache), router, message, this);
 
         // if route found
         if (classMessage && classMessage !== null) {

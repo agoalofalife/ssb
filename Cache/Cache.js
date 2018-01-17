@@ -10,11 +10,10 @@ module.exports = class Cache {
      * @param callback
      * @param paramsCallback
      */
-    route(message, driverCache, callback, ...paramsCallback){
+    async route(message, driverCache, callback, ...paramsCallback){
         let cache = driverCache.get(message.channel);
         if (cache === undefined) {
-            // console.log( callback.apply(this, paramsCallback) );
-            return driverCache.save(message.channel, callback.apply(this, paramsCallback));
+            return driverCache.save(message.channel, await callback.apply(this, paramsCallback));
         }
         // get cache
         return cache;

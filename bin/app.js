@@ -4,6 +4,7 @@ require('../setting/color');
 require('console.table');
 
 const util = require('util');
+const copy = require('fs-copy-file');
 const program = require('commander');
 const { version } = require('../helper');
 const glob = require('glob');
@@ -38,7 +39,25 @@ program
         }
     });
 
-    program.command('show <what>')
+program
+    .version(version)
+    .description('To create something')
+    .command('create <what>')
+    .action(function (what) {
+        switch (what) {
+            case 'env':
+            return copy(path.resolve(`${__dirname}/../.env.example`), path.resolve(`${__dirname}/../.env`), (err) => {
+                if (err) throw err;
+                console.log('Success create .env file'.info);
+            });
+            default:
+                return console.log('Not found something to create...'.warn)
+        }
+    });
+
+
+
+program.command('show <what>')
     .description('Show information')
     .action(async function (what) {
         switch (what) {

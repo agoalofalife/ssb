@@ -21,6 +21,7 @@
     "console.table": "^0.9.1",
     "dotenv": "^4.0.0",
     "express": "^4.16.2",
+    "fs-copy-file": "^1.0.2",
     "glob": "^7.1.2",
     "nodemon": "^1.14.8",
     "slackbots": "^1.1.0",

@@ -1,9 +1,10 @@
 {
-  "name": "ssb",
+  "name": "super-slack-bot",
   "bin": {
     "ssb": "./bin/app.js"
   },
-  "version": "0.0.0",
+  "main": "BaseBot.js",
+  "version": "0.0.0-development",
   "description": "Slack bot framework for build platform",
   "keywords": [
     "bot",

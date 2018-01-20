@@ -45,14 +45,13 @@ program
             case 'events':
                 let out = [];
                     let globPromise = util.promisify(glob);
-                    let files = await globPromise("./Messages/**/*.js", {
-                        ignore: ['./Messages/Mixins/*.js', './Messages/MessageBase/Message.js']
-                    });
 
+                    let files = await globPromise(`${__dirname}/../Messages/**/*.js`, {
+                        ignore: [path.resolve(`${__dirname}/../Messages/Mixins/*.js`), path.resolve(`${__dirname}/../Messages/MessageBase/Message.js`)]
+                    });
                     files.forEach((file) => {
                         let truePath = path.resolve(process.cwd(), file);
                         let classMessage = require(truePath);
-
                         let objectMessage = (new classMessage);
                         let events = objectMessage.typeEvent;
                         let description = objectMessage.descriptionEvent;

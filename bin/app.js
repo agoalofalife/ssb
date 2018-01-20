@@ -20,7 +20,7 @@ program
     .option('-s, --start', 'Start server in waiting for redirect url')
     .action(function (options) {
         if (options.start) {
-            Server.instance.get('/', (req, res) => {
+            Server.instance.app.get('/', (req, res) => {
                 axios.get(urlAuth, {
                     params:{
                         client_id: process.env.SLACK_CLIENT_ID,

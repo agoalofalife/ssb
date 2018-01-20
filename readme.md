@@ -17,9 +17,8 @@ Usually we do not want to disassemble authentication, application architecture a
 We just want to add configuration and quick to develop, so go ahead!
 
 
-
-
 - [Requirement](#Requirement)
+- [Installation](#Installation)
 - [Environment variables](#Environment_variables)
 - [Message](#Message)
 - [Conversation or Interactive](#Conversation_or_Interactive)
@@ -33,6 +32,14 @@ We just want to add configuration and quick to develop, so go ahead!
 Node js version 9.3.0
 The app is under development(WIP)
 ```
+
+<a name="Installation"></a>
+## Installation
+
+```text
+npm install super-slack-bot
+```
+
 
 <a name="Environment_variables"></a>
 ## Environment variables

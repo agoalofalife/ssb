@@ -3,6 +3,7 @@ const ChannelMessage = require('../Messages/MessageBase/ChannelMessage');
 const MessageChangedDirect = require('../Messages/MessageSubType/MessageChanged/MessageChangedDirect');
 const MessageChangedChannel = require('../Messages/MessageSubType/MessageChanged/MessageChangedChannel');
 const MessageChangedMultipartDirect = require('../Messages/MessageSubType/MessageChanged/MessageChangedMultipartDirect');
+const MessageChangedPrivate = require('../Messages/MessageSubType/MessageChanged/MessageChangedPrivate');
 const PrivateChannelMessage = require('../Messages/MessageBase/PrivateChannelMessage');
 const MultipartDirectMessage = require('../Messages/MessageBase/MultipartDirectMessage');
 
@@ -18,9 +19,11 @@ const routes = [
     PrivateChannelMessage,
     MultipartDirectMessage,
     // subtype
+    // changed message
     MessageChangedDirect,
     MessageChangedChannel,
     MessageChangedMultipartDirect,
+    MessageChangedPrivate,
 ];
 
 /**

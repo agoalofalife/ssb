@@ -54,7 +54,7 @@ let interactiveOptions = {
 /**
  * this is example
  */
-bot.on('message_changed.message.mpim', (route, routeMention) => {
+bot.on('message_changed.message.groups', (route, routeMention) => {
     route(/hello|hi/gi, async function (response, classMessage) {
         let res = await classMessage.replyEphemeral('hello change!');
     });

@@ -76,6 +76,8 @@ module.exports = class BaseBot extends SlackBot {
      * @param message object
      */
     async managerTypeMessages(message) {
+        // TODO I think we should add an interface 'route-cache' and method cacheRoute in Message type class
+        // TODO until we leave the introduction of caching
         // let classMessage = await (new Cache).route(message, (new BufferDriverCache), router, message, this);
         let classMessage = await router(message, this);
         // if route found

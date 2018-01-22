@@ -54,7 +54,7 @@ let interactiveOptions = {
 /**
  * this is example
  */
-bot.on('message.im', (route, routeMention) => {
+bot.on('message.mpim', (route, routeMention) => {
     route(/hello|hi/gi, async function (response, classMessage) {
         let res = await classMessage.reply('hi');
     });
@@ -66,6 +66,17 @@ bot.on('message.im', (route, routeMention) => {
     // });
 });
 
+bot.on('bot_message.message.mpim', (route, routeMention) => {
+    route(/hello|hi/gi, async function (response, classMessage) {
+        let res = await classMessage.reply('Реакция на твое приветствие!');
+    });
+
+    // routeMention('allo', async function (response, classMessage) {
+    //     classMessage.reply('hello', {
+    //         icon_emoji: ':piggy:'
+    //     });
+    // });
+});
 
 bot.on('conversation', async (route, response) => {
     route('welcome_button', function (responseInitiator, classConversation) {

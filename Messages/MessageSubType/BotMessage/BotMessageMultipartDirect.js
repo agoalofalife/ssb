@@ -33,7 +33,7 @@ module.exports = class BotMessageMultipartDirect extends MultipartDirectMessage 
                 comparable.bot_id !== undefined && group !== undefined &&
                 group.id === comparable.channel;
         }catch (error){
-            // console.log( error );
+            console.log(error);
             return false;
         }
 

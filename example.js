@@ -66,18 +66,6 @@ bot.on('message.mpim', (route, routeMention) => {
     // });
 });
 
-bot.on('bot_message.message.mpim', (route, routeMention) => {
-    route(/hello|hi/gi, async function (response, classMessage) {
-        let res = await classMessage.reply('Реакция на твое приветствие!');
-    });
-
-    // routeMention('allo', async function (response, classMessage) {
-    //     classMessage.reply('hello', {
-    //         icon_emoji: ':piggy:'
-    //     });
-    // });
-});
-
 bot.on('conversation', async (route, response) => {
     route('welcome_button', function (responseInitiator, classConversation) {
         response.end('ok');

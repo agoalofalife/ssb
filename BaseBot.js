@@ -60,7 +60,7 @@ module.exports = class BaseBot extends SlackBot {
                 return this.botId;
             } else {
                 try {
-                    let user = await this.getUser(this.name);
+                    let user = await this.getUserRealName(this.name);
                     this.botId = user.id;
                     return user.id;
                 } catch (err) {
@@ -69,6 +69,20 @@ module.exports = class BaseBot extends SlackBot {
                 }
             }
         }.bind(this)();
+    }
+
+    /**
+     * Get user by name
+     * @param {string} real_name
+     * @returns {object}
+     */
+    getUserRealName(real_name) {
+        return this.getUsers().then(function(data) {
+            let res = _.find(data.members, { real_name: real_name });
+
+            console.assert(res, 'user not found');
+            return res;
+        });
     }
 
     /**

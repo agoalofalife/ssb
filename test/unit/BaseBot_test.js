@@ -23,6 +23,19 @@ class FakeBaseBot extends BaseBotClass{
             });
         })
     }
+    getUsers(){
+        return new Promise((resolve, reject) => {
+            if (name === 'error'){
+                reject();
+            }
+            resolve({
+                members:[{
+                    id:randomId,
+                    real_name:name
+                }]
+            });
+        })
+    }
     listenConversation(Server){}
     listenCommands(Server){}
 
@@ -122,6 +135,12 @@ describe('BaseBot', function() {
                 assert.equal(typeof route === 'function', true);
             });
             await BaseBotObject.managerTypeMessages(fakeResponse);
+        });
+    });
+    describe('#getUserRealName', function () {
+        it('should return user', async function () {
+            let match = await BaseBotObject.getUserRealName(name);
+            assert.equal(match.real_name, name)
         });
     });
     describe('#listenConversation', function() {

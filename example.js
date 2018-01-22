@@ -54,10 +54,9 @@ let interactiveOptions = {
 /**
  * this is example
  */
-
 bot.on('message.im', (route, routeMention) => {
     route(/hello|hi/gi, async function (response, classMessage) {
-        let res = await classMessage.reply('Реакция на твое приветствие!');
+        let res = await classMessage.reply('hi');
     });
 
     // routeMention('allo', async function (response, classMessage) {
@@ -66,6 +65,7 @@ bot.on('message.im', (route, routeMention) => {
     //     });
     // });
 });
+
 
 bot.on('conversation', async (route, response) => {
     route('welcome_button', function (responseInitiator, classConversation) {

@@ -72,7 +72,7 @@ module.exports = class BaseBot extends SlackBot {
     }
 
     /**
-     * Get user by name
+     * search user via his property real_name
      * @param {string} real_name
      * @returns {object}
      */

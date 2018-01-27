@@ -1,0 +1,6 @@
+/**
+ *
+ */
+interface RouteContract{
+    route()
+}

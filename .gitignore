@@ -5,8 +5,3 @@ node_modules
 coverage
 .nyc_output
 *.lcov
-*.js
-!_*.js
-*.js.map
-!webpack.config.js
-typings

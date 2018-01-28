@@ -8,6 +8,11 @@ class FakeMessageRouteTrue{
         return true;
     }
 }
+class FakeMessageRouteTrue2{
+    static route(response, bool){
+        return true;
+    }
+}
 class FakeMessageRouteFalse{
     static route(response, bool){
         return false;
@@ -50,6 +55,26 @@ const schemaMultiValid = [
         ],
     },
 ];
+const schemaValidOnlyBaseMessage = [
+    {
+        class:FakeMessageRouteFalse,
+        routes:[
+            {
+                class:FakeMessageRouteFalse,
+                routes:[],
+            },
+        ],
+    },
+    {
+        class:FakeMessageRouteTrue2,
+        routes:[
+            {
+                class:FakeMessageRouteFalse,
+                routes:[],
+            },
+        ],
+    },
+];
 const responseSlack = {};
 
 describe('ParserMessage', () => {
@@ -68,6 +93,10 @@ describe('ParserMessage', () => {
         it('if in scheme not valid rotues, expected undefined', function () {
             let parser = new ParserMessage(schemaValidWithRoutes);
             assert.equal(parser.run(), undefined)
+        });
+        it('if a match with the base type but no match with subtypes', function () {
+            let parser = new ParserMessage(schemaValidOnlyBaseMessage);
+            chai.expect(parser.run()).to.be.an.instanceof(FakeMessageRouteTrue2);
         });
     })
 });

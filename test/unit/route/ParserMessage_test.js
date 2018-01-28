@@ -30,6 +30,26 @@ const schemaValidWithRoutes = [
         ],
     },
 ];
+const schemaMultiValid = [
+    {
+        class:FakeMessageRouteFalse,
+        routes:[
+            {
+                class:FakeMessageRouteTrue,
+                routes:[],
+            },
+        ],
+    },
+    {
+        class:FakeMessageRouteTrue,
+        routes:[
+            {
+                class:FakeMessageRouteTrue,
+                routes:[],
+            },
+        ],
+    },
+];
 const responseSlack = {};
 
 describe('ParserMessage', () => {
@@ -37,13 +57,17 @@ describe('ParserMessage', () => {
         it('expected exception if first argument not array ', function () {
                 chai.expect(() => {new ParserMessage(faker.random.word())}).to.throw('Expected first argument is array type!')
         });
-        it('if property routes is empty, we call static route', function () {
-            let parser = new ParserMessage(schemaWithoutRoutes);
-            chai.expect(parser.run()).to.be.an.instanceof(FakeMessageRouteTrue);
+        it('if class return true and routes length 0, then get instance class', function () {
+                let parser = new ParserMessage(schemaWithoutRoutes);
+                chai.expect(parser.run()).to.be.an.instanceof(FakeMessageRouteTrue);
         });
         it('if in schema exist routes, then we call route again', function () {
-            let parser = new ParserMessage(schemaValidWithRoutes);
+            let parser = new ParserMessage(schemaMultiValid);
             chai.expect(parser.run()).to.be.an.instanceof(FakeMessageRouteTrue);
+        });
+        it('if in scheme not valid rotues, expected undefined', function () {
+            let parser = new ParserMessage(schemaValidWithRoutes);
+            assert.equal(parser.run(), undefined)
         });
     })
 });

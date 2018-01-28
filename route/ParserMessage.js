@@ -18,12 +18,13 @@ module.exports = class ParserMessage{
  * @return {*}
  */
   run() {
-      for (let i = 0; i <= this.currentRoute.length; i++) {
+      for (let i = 0; i < this.currentRoute.length; i++) {
           let objectSchema = this.currentRoute[i];
-          if (Array.isArray(objectSchema.routes) && objectSchema.routes.length > 0) {
+
+          if (Array.isArray(objectSchema.routes) && objectSchema.routes.length > 0 && objectSchema.class.route(this.responseSlack)) {
               return (new ParserMessage(objectSchema.routes, this.responseSlack, this)).run()
           } else{
-              if(objectSchema.class.route(this.responseSlack)) {
+              if(Array.isArray(objectSchema.routes) && objectSchema.routes.length === 0 && objectSchema.class.route(this.responseSlack)) {
                   return new objectSchema.class();
               }
           }

@@ -7,10 +7,12 @@ module.exports = class Message {
      *
      * @param response
      * @param baseBot class BaseBot
+     * @param parent
      */
-    constructor(response, baseBot){
+    constructor(response, baseBot, parent = null){
         this.response = response;
         this.base = baseBot;
+        this.parent = parent;
     }
 
     /**

@@ -1,14 +1,14 @@
 require('dotenv').config();
 
 const SlackBot = require('slackbots');
-const {router} = require('./route/routes');
+// const {router} = require('./route/routes');
+const schema = require('./route/schema');
+const ParserMessage = require('./route/ParserMessage');
 const RouteClass = require('./route/Route');
 const Server = require('./Server/Server');
 const Conversation = require('./Messages/Conversation');
 const Command = require('./Messages/Command');
 const _ = require('lodash');
-const Cache = require('./Cache/Cache');
-const BufferDriverCache = require('./Cache/Drivers/BufferDriverCache');
 
 module.exports = class BaseBot extends SlackBot {
     /**
@@ -90,14 +90,13 @@ module.exports = class BaseBot extends SlackBot {
      * @param message object
      */
     async managerTypeMessages(message) {
-        // console.log( message );
+        let classMessage = await (new ParserMessage(schema, message, this)).run();
+
         // TODO I think we should add an interface 'route-cache' and method cacheRoute in Message type class
         // TODO until we leave the introduction of caching
         // let classMessage = await (new Cache).route(message, (new BufferDriverCache), router, message, this);
-        let classMessage = await router(message, this);
         // if route found
         if (classMessage && classMessage !== null) {
-
             let fnRoute = this.Route.route(classMessage, this);
             let fnRouteMention = await this.Route.routeMention(classMessage, this);
 

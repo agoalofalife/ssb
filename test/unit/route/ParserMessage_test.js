@@ -79,24 +79,24 @@ const responseSlack = {};
 
 describe('ParserMessage', () => {
     describe('check parameters in constructor', () => {
-        it('expected exception if first argument not array ', function () {
+        it('expected exception if first argument not array ', () => {
                 chai.expect(() => {new ParserMessage(faker.random.word())}).to.throw('Expected first argument is array type!')
         });
-        it('if class return true and routes length 0, then get instance class', function () {
+        it('if class return true and routes length 0, then get instance class', async () => {
                 let parser = new ParserMessage(schemaWithoutRoutes);
-                chai.expect(parser.run()).to.be.an.instanceof(FakeMessageRouteTrue);
+                chai.expect(await parser.run()).to.be.an.instanceof(FakeMessageRouteTrue);
         });
-        it('if in schema exist routes, then we call route again', function () {
+        it('if in schema exist routes, then we call route again', async () => {
             let parser = new ParserMessage(schemaMultiValid);
-            chai.expect(parser.run()).to.be.an.instanceof(FakeMessageRouteTrue);
+            chai.expect(await parser.run()).to.be.an.instanceof(FakeMessageRouteTrue);
         });
-        it('if in scheme not valid rotues, expected undefined', function () {
+        it('if in scheme not valid rotues, expected undefined', async () => {
             let parser = new ParserMessage(schemaValidWithRoutes);
-            assert.equal(parser.run(), undefined)
+            assert.equal(await parser.run(), undefined)
         });
-        it('if a match with the base type but no match with subtypes', function () {
+        it('if a match with the base type but no match with subtypes', async () => {
             let parser = new ParserMessage(schemaValidOnlyBaseMessage);
-            chai.expect(parser.run()).to.be.an.instanceof(FakeMessageRouteTrue2);
+            chai.expect(await parser.run()).to.be.an.instanceof(FakeMessageRouteTrue2);
         });
     })
 });

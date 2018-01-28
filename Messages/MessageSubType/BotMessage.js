@@ -1,13 +1,17 @@
-
-
-module.exports = class BotMessage{
+const Message = require('./../MessageBase/Message');
+/**
+ *
+ * @type {module.BotMessage}
+ */
+module.exports = class BotMessage extends Message{
     /**
      * @link https://api.slack.com/events/message.im
      * @return {string}
      */
     get typeEvent() {
-        return 'bot_message';
+        return `${this.parent.typeEvent}.bot_message`;
     }
+
     /**
      * Description event
      * @return {string}
@@ -21,15 +25,11 @@ module.exports = class BotMessage{
      * @return {boolean}
      */
     static route(comparable) {
-        return comparable.type === 'message' &&
-            comparable.subtype === 'bot_message' &&
-            comparable.channel !== undefined &&
-            comparable.channel.charAt(0) === this.firstLetter() &&
+        return comparable.subtype === 'bot_message' &&
             comparable.bot_id !== undefined;
     }
 
     get compareResponse(){
         return this.response.text;
     }
-
 };

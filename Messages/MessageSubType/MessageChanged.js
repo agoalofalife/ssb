@@ -1,15 +1,15 @@
 const Message = require('./../MessageBase/Message');
 /**
  *
- * @type {module.BotMessage}
+ * @type {module.MessageChanged}
  */
-module.exports = class BotMessage extends Message{
+module.exports = class MessageChanged extends Message{
     /**
      * @link https://api.slack.com/events/message.im
      * @return {string}
      */
     get typeEvent() {
-        return `${this.parent.typeEvent}.bot_message`;
+        return `${this.parent.typeEvent}.message_changed`;
     }
 
     /**
@@ -17,7 +17,7 @@ module.exports = class BotMessage extends Message{
      * @return {string}
      */
     get descriptionEvent() {
-        return 'The event occurs when a message was sent by a bot.';
+        return 'The event occurs when a message was changed.';
     }
     /**
      * check route
@@ -25,8 +25,10 @@ module.exports = class BotMessage extends Message{
      * @return {boolean}
      */
     static route(comparable) {
-        return comparable.subtype === 'bot_message' &&
-            comparable.bot_id !== undefined;
+        return comparable.subtype === 'message_changed' &&
+            comparable.channel !== undefined &&
+            comparable.channel.charAt(0) === this.firstLetter() &&
+            comparable.message !== undefined;
     }
 
     get compareResponse(){

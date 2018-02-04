@@ -25,8 +25,7 @@ module.exports = class BotMessage extends Message{
      * @return {boolean}
      */
     static route(comparable) {
-        return comparable.subtype === 'bot_message' &&
-            comparable.bot_id !== undefined;
+        return comparable.subtype === 'bot_message';
     }
 
     get compareResponse(){

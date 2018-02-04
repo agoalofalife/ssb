@@ -25,10 +25,7 @@ module.exports = class MessageChanged extends Message{
      * @return {boolean}
      */
     static route(comparable) {
-        return comparable.subtype === 'message_changed' &&
-            comparable.channel !== undefined &&
-            comparable.channel.charAt(0) === this.firstLetter() &&
-            comparable.message !== undefined;
+        return comparable.subtype === 'message_changed';
     }
 
     get compareResponse(){

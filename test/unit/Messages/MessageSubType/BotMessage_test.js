@@ -15,7 +15,7 @@ describe('BotMessage', () => {
             assert.equal((new BotMessage('', '', directMessage)).typeEvent, `${directMessage.typeEvent}.bot_message`);
     });
     it('expected valid description', () => {
-        assert.equal((new BotMessage()).descriptionEvent, 'The event occurs when a message was sent by a bot in the channel');
+        assert.equal((new BotMessage()).descriptionEvent, 'The event occurs when a message was sent by a bot.');
     });
     it('route test method is true', () => {
         assert.equal(BotMessage.route(fakeResponseSlack), true)

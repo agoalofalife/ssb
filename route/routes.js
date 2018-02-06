@@ -1,14 +1,5 @@
 const DirectMessage = require('../Messages/MessageBase/DirectMessage');
 const ChannelMessage = require('../Messages/MessageBase/ChannelMessage');
-const MessageChangedDirect = require('../Messages/MessageSubType/MessageChanged/MessageChangedDirect');
-const MessageChangedChannel = require('../Messages/MessageSubType/MessageChanged/MessageChangedChannel');
-const MessageChangedMultipartDirect = require('../Messages/MessageSubType/MessageChanged/MessageChangedMultipartDirect');
-const MessageChangedPrivate = require('../Messages/MessageSubType/MessageChanged/MessageChangedPrivate');
-const BotMessageChannel = require('../Messages/MessageSubType/BotMessage/BotMessageChannel');
-const BotMessageDirect = require('../Messages/MessageSubType/BotMessage/BotMessageDirect');
-const BotMessageMultipartDirect = require('../Messages/MessageSubType/BotMessage/BotMessageMultipartDirect');
-const PrivateChannelMessage = require('../Messages/MessageBase/PrivateChannelMessage');
-const MultipartDirectMessage = require('../Messages/MessageBase/MultipartDirectMessage');
 
 
 /**
@@ -19,18 +10,6 @@ const MultipartDirectMessage = require('../Messages/MessageBase/MultipartDirectM
 const routes = [
     DirectMessage,
     ChannelMessage,
-    PrivateChannelMessage,
-    MultipartDirectMessage,
-    // subtype
-    // changed message
-    MessageChangedDirect,
-    MessageChangedChannel,
-    MessageChangedMultipartDirect,
-    MessageChangedPrivate,
-    // bot meesage
-    BotMessageChannel,
-    BotMessageDirect,
-    BotMessageMultipartDirect,
 ];
 
 /**

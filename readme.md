@@ -25,6 +25,7 @@ We just want to add configuration and quick to develop, so go ahead!
 - [Slash Commands](#Slash_Commands)
 - [Console](#Console)
 - [Tutorial on the use](#Tutorial_on_the_use)
+- [Contributions](#Contributions)
 
 <a name="Requirement"></a>
 ## Requirement
@@ -190,3 +191,7 @@ bot.on('message.channels', (route, routeMention) => {
      });
 });
 ```
+
+<a name="Contributions"></a>
+## Contributions welcome!
+Pull requests/forks all welcome, and please share your thoughts, questions and feature requests in Issues section.

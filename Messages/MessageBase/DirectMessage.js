@@ -7,14 +7,14 @@ module.exports = mixin(MixinMention.prototype, ['constructor'])(class DirectMess
      * @link https://api.slack.com/events/message.im
      * @return {string}
      */
-    get typeEvent() {
+     get typeEvent() {
         return 'message.im';
     }
     /**
      * Description event
      * @return {string}
      */
-    get descriptionEvent() {
+     get descriptionEvent() {
         return 'The event occurs when a message arrives in direct(personal)';
     }
     get compareResponse(){

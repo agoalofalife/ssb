@@ -6,6 +6,7 @@ const MultipartDirectMessage = require('../Messages/MessageBase/MultipartDirectM
 
 // sub message type
 const BotMessage = require('../Messages/MessageSubType/BotMessage');
+const MessageChanged = require('../Messages/MessageSubType/MessageChanged');
 
 /**
  * Parent property calculates in runtime process
@@ -14,6 +15,10 @@ const BotMessage = require('../Messages/MessageSubType/BotMessage');
 const SubMessageRoutes = [
     {
         class:BotMessage,
+        routes:[],
+    },
+    {
+        class:MessageChanged,
         routes:[],
     },
 ];

@@ -3,11 +3,9 @@ require('dotenv').config();
 require('../setting/color');
 require('console.table');
 
-const util = require('util');
 const copy = require('fs-copy-file');
 const program = require('commander');
 const { version } = require('../helper');
-const glob = require('glob');
 const path = require('path');
 const Server = require('../Server/Server');
 const urlAuth = 'https://slack.com/api/oauth.access';
@@ -62,25 +60,31 @@ program.command('show <what>')
     .action(async function (what) {
         switch (what) {
             case 'events':
-                let out = [];
-                    let globPromise = util.promisify(glob);
-
-                    let files = await globPromise(`${__dirname}/../Messages/**/*.js`, {
-                        ignore: [path.resolve(`${__dirname}/../Messages/Mixins/*.js`), path.resolve(`${__dirname}/../Messages/MessageBase/Message.js`)]
-                    });
-                    files.forEach((file) => {
-                        let truePath = path.resolve(process.cwd(), file);
-                        let classMessage = require(truePath);
-                        let objectMessage = (new classMessage);
-                        let events = objectMessage.typeEvent;
-                        let description = objectMessage.descriptionEvent;
-
-                        out.push({
-                            event:events.verbose,
-                            description:description.verbose,
+                let base = [];
+                let sub = [];
+                let listAccessRoutes = require('../route/schema');
+                listAccessRoutes.forEach(route => {
+                    let baseRoute = (new route.class);
+                    base.push({
+                            event:baseRoute.typeEvent.verbose,
+                            description:baseRoute.descriptionEvent.verbose,
                         });
-                    });
-                return console.table('List events', out);
+                    if (Array.isArray(route.routes) && route.routes.length > 0) {
+                        sub.push({
+                            event:'----------------------------------------------------------------'.input,
+                            description:'----------------------------------------------------------------'.input,
+                        });
+                        route.routes.forEach(subRoute => {
+                            let subRouteObject = (new subRoute.class(null, null, baseRoute));
+                            sub.push({
+                                event:subRouteObject.typeEvent.verbose,
+                                description:subRouteObject.descriptionEvent.verbose,
+                            });
+                        });
+                    }
+                });
+                base = base.concat(sub);
+                return console.table('List events', base);
             default:
             return console.log('Not found something to show...'.warn)
         }

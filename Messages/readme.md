@@ -6,7 +6,7 @@
   
    Arguments:
    
-   * comparable - response from slack server (this is object)
+   * route - response from slack server (this is object)
    
 ### Interface Message
 

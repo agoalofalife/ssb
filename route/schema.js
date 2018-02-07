@@ -7,6 +7,8 @@ const MultipartDirectMessage = require('../Messages/MessageBase/MultipartDirectM
 // sub message type
 const BotMessage = require('../Messages/MessageSubType/BotMessage');
 const MessageChanged = require('../Messages/MessageSubType/MessageChanged');
+const ChannelArchive = require('../Messages/MessageSubType/ChannelArchive');
+const ChannelJoin = require('../Messages/MessageSubType/ChannelJoin');
 
 /**
  * Parent property calculates in runtime process
@@ -19,6 +21,14 @@ const SubMessageRoutes = [
     },
     {
         class:MessageChanged,
+        routes:[],
+    },
+    {
+        class:ChannelArchive,
+        routes:[],
+    },
+    {
+        class:ChannelJoin,
         routes:[],
     },
 ];

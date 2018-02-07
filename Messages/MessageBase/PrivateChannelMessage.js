@@ -1,8 +1,6 @@
-const mixin = require('../../helper').mixin;
-const MixinMention = require('../Mixins/Mention');
 const Message = require('./Message');
 
-module.exports = mixin(MixinMention.prototype, ['constructor'])(class PrivateChannelMessage extends Message{
+module.exports = class PrivateChannelMessage extends Message{
     /**
      *
      * @return {string}
@@ -48,5 +46,5 @@ module.exports = mixin(MixinMention.prototype, ['constructor'])(class PrivateCha
             return false;
         }
     }
-});
+};
 

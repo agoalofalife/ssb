@@ -26,7 +26,7 @@ module.exports = class ParserMessage{
 
           if (Array.isArray(objectSchema.routes) && objectSchema.routes.length > 0 && await objectSchema.class.route(this.responseSlack)) {
               return (new ParserMessage(objectSchema.routes, this.responseSlack, this.baseObject, currentLevelObject)).run();
-          } else{
+          } else {
               if(Array.isArray(objectSchema.routes) && objectSchema.routes.length === 0 && await objectSchema.class.route(this.responseSlack)) {
                   return currentLevelObject;
               }

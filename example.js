@@ -54,7 +54,7 @@ let interactiveOptions = {
 /**
  * this is example
  */
-bot.on('message.im', (route, routeMention) => {
+bot.on('message.im.message_changed', (route, routeMention) => {
     route(/hello|hi/gi, async function (response, classMessage) {
         let res = await classMessage.reply('hi');
     });

@@ -1,8 +1,12 @@
+const mixin = require('../../helper').mixin;
+const MixinMention = require('../Mixins/Mention');
+
+
 /**
  *
  * @type {module.Message}
  */
-module.exports = class Message {
+module.exports =  mixin(MixinMention.prototype, ['constructor'])(class Message {
     /**
      *
      * @param response
@@ -56,4 +60,4 @@ module.exports = class Message {
             return await this.base.postEphemeral(this.response.channel, this.response.user || this.response.message.user,  message, params);
         }
     }
-};
+});

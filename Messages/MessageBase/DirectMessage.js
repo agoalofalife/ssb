@@ -1,13 +1,11 @@
-const mixin = require('../../helper').mixin;
-const MixinMention = require('../Mixins/Mention');
 const Message = require('./Message');
 
-module.exports = mixin(MixinMention.prototype, ['constructor'])(class DirectMessage extends Message{
+module.exports = class DirectMessage extends Message{
     /**
      * @link https://api.slack.com/events/message.im
      * @return {string}
      */
-     get typeEvent() {
+    get typeEvent() {
         return 'message.im';
     }
     /**
@@ -31,8 +29,8 @@ module.exports = mixin(MixinMention.prototype, ['constructor'])(class DirectMess
      */
     static route(comparable) {
         return comparable.type === 'message' &&
-            comparable.subtype === undefined &&
+            // comparable.subtype === undefined &&
             comparable.channel !== undefined && comparable.channel.charAt(0) === this.firstLetter();
     }
-});
+};
 

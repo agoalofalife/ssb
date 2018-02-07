@@ -1,8 +1,6 @@
-const mixin = require('../../helper').mixin;
-const MixinMention = require('../Mixins/Mention');
 const Message = require('./Message');
 
-module.exports = mixin(MixinMention.prototype, ['constructor'])(class ChannelMessage extends Message{
+module.exports = class ChannelMessage extends Message{
 
     static firstLetter() {
         return 'C';
@@ -37,5 +35,5 @@ module.exports = mixin(MixinMention.prototype, ['constructor'])(class ChannelMes
             comparable.subtype === undefined &&
             comparable.channel !== undefined && comparable.channel.charAt(0) === this.firstLetter();
     }
-});
+};
 

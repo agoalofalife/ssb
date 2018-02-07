@@ -29,6 +29,6 @@ module.exports = class MessageChanged extends Message{
     }
 
     get compareResponse(){
-        return this.response.text;
+        return this.response.message.text;
     }
 };

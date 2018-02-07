@@ -9,6 +9,7 @@ const BotMessage = require('../Messages/MessageSubType/BotMessage');
 const MessageChanged = require('../Messages/MessageSubType/MessageChanged');
 const ChannelArchive = require('../Messages/MessageSubType/ChannelArchive');
 const ChannelJoin = require('../Messages/MessageSubType/ChannelJoin');
+const PinnedItem = require('../Messages/MessageSubType/PinnedItem');
 
 /**
  * Parent property calculates in runtime process
@@ -29,6 +30,10 @@ const SubMessageRoutes = [
     },
     {
         class:ChannelJoin,
+        routes:[],
+    },
+    {
+        class:PinnedItem,
         routes:[],
     },
 ];

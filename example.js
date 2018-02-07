@@ -54,9 +54,9 @@ let interactiveOptions = {
 /**
  * this is example
  */
-bot.on('message.im.message_changed', (route, routeMention) => {
+bot.on('message.groups.pinned_item', (route, routeMention) => {
     route(/hello|hi/gi, async function (response, classMessage) {
-        let res = await classMessage.reply('hi');
+        let res = await classMessage.reply('Ваше сообщение было архивировано!');
     });
 
     // routeMention('allo', async function (response, classMessage) {

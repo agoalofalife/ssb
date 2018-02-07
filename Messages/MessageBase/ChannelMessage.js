@@ -32,7 +32,6 @@ module.exports = class ChannelMessage extends Message{
      */
     static route(comparable) {
         return comparable.type === 'message' &&
-            comparable.subtype === undefined &&
             comparable.channel !== undefined && comparable.channel.charAt(0) === this.firstLetter();
     }
 };

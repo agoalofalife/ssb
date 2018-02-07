@@ -24,10 +24,10 @@ module.exports = class ParserMessage{
           let objectSchema = this.currentRoute[i];
           let currentLevelObject = new objectSchema.class(this.responseSlack, this.baseObject, this.parent);
 
-          if (Array.isArray(objectSchema.routes) && objectSchema.routes.length > 0 && await objectSchema.class.route(this.responseSlack)) {
+          if (Array.isArray(objectSchema.routes) && objectSchema.routes.length > 0 && await objectSchema.class.route(this.responseSlack, this.baseObject)) {
               return (new ParserMessage(objectSchema.routes, this.responseSlack, this.baseObject, currentLevelObject)).run();
           } else {
-              if(Array.isArray(objectSchema.routes) && objectSchema.routes.length === 0 && await objectSchema.class.route(this.responseSlack)) {
+              if(Array.isArray(objectSchema.routes) && objectSchema.routes.length === 0 && await objectSchema.class.route(this.responseSlack, this.baseObject)) {
                   return currentLevelObject;
               }
           }

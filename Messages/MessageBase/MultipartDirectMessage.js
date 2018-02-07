@@ -39,7 +39,6 @@ module.exports = class MultipartDirectMessage extends Message{
             let group = await base.getGroupMultiDirectById(comparable.channel);
 
             return comparable.type === 'message' &&
-                comparable.subtype === undefined &&
                 comparable.channel !== undefined && comparable.channel.charAt(0) === this.firstLetter()
                 && group !== undefined && group.id === comparable.channel;
         }catch (error){

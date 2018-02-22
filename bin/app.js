@@ -44,7 +44,7 @@ program
     .action(function (what) {
         switch (what) {
             case 'env':
-            return copy(path.resolve(`${__dirname}/../.env.example`), path.resolve(`${__dirname}/../.env`), (err) => {
+            return copy(path.resolve(`${__dirname}/../.env.example`), path.resolve(`${process.env.PWD}/.env`), (err) => {
                 if (err) throw err;
                 console.log('Success create .env file'.info);
             });

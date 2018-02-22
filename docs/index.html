@@ -8,6 +8,7 @@
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <link rel="stylesheet" href="//unpkg.com/docsify/lib/themes/vue.css">
   <link rel="stylesheet" href="//unpkg.com/docsify-copy-code/styles.css">
+  <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
 </head>
 <body>
 
@@ -16,14 +17,29 @@
   <script>
     window.$docsify = {
       plugins: [
-          window.DocsifyCopyCodePlugin.init()
+          window.DocsifyCopyCodePlugin.init(),
+          function (hook) {
+              var footer = [
+                  '<hr/>',
+                  '<footer>',
+                  '<a style="text-decoration: none;    margin-right: 2%;" href="https://join.slack.com/t/super-slack-bot/shared_invite/enQtMzE5MjQ1NzI4MjkzLTBmOTI2ZGQ3NTY0YjE0YzIzNTk1MjE5NTcwZTFjOTAxNTQ1NmZhZDNkMjI2OTQ4ODEzNWJiNTAxZWRmOWNjYzY" target="_blank" rel="noopener noreferrer">\n' +
+                  '<i class="ion-pound"></i> Slack\n' +
+                  '</a>',
+                  '<a style="text-decoration: none" href="https://www.paypal.me/agoalofalife/5usd" target="_blank" rel="noopener noreferrer"><i class="ion-social-usd"></i> Donate</a>',
+                  '</footer>'
+              ].join('')
+
+              hook.afterEach(function (html) {
+                  return html + footer
+              })
+          }
       ],
       name: 'ssb',
       repo: 'agoalofalife/ssb',
       loadSidebar: true,
       loadNavbar: true,
       themeColor: '#E6A732',
-      subMaxLevel: 4,
+      subMaxLevel: 2,
       coverpage: true
     }
   </script>

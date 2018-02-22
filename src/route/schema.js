@@ -11,6 +11,10 @@ const ChannelArchive = require('../Messages/MessageSubType/ChannelArchive');
 const ChannelJoin = require('../Messages/MessageSubType/ChannelJoin');
 const PinnedItem = require('../Messages/MessageSubType/PinnedItem');
 
+// others
+const Conversation = require('../Messages/Conversation');
+const Command = require('../Messages/Command');
+
 /**
  * Parent property calculates in runtime process
  * @type {*[]}
@@ -59,6 +63,12 @@ const MessageRoutes = [
         class:MultipartDirectMessage,
         routes:SubMessageRoutes,
     },
+    {
+        class:Conversation,
+    },
+    {
+        class:Command,
+    }
 ];
 
 module.exports = MessageRoutes;

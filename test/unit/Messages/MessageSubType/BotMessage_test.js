@@ -1,5 +1,5 @@
-const BotMessage = require('./../../../../Messages/MessageSubType/BotMessage');
-const DirectMessage = require('./../../../../Messages/MessageBase/DirectMessage');
+const BotMessage = require('../../../../src/Messages/MessageSubType/BotMessage');
+const DirectMessage = require('../../../../src/Messages/MessageBase/DirectMessage');
 const assert = require('assert');
 const faker = require('faker');
 let  fakeResponseSlack = {

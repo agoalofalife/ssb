@@ -1,5 +1,5 @@
 const assert = require('assert');
-const Conversation = require('./../../../Messages/Conversation');
+const Conversation = require('../../../src/Messages/Conversation');
 const faker = require('faker');
 
 let SlackBotFake = {

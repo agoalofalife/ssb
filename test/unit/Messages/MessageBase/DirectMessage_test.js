@@ -1,5 +1,5 @@
 const assert = require('assert');
-const DirectMessage = require('./../../../../Messages/MessageBase/DirectMessage');
+const DirectMessage = require('../../../../src/Messages/MessageBase/DirectMessage');
 const faker = require('faker');
 
 let randomFaker = faker.random.uuid();

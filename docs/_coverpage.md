@@ -1,4 +1,4 @@
-# SSB <small>Super Slack Bot</small>
+# SSB <small>**Super Slack Bot**</small>
 
 >  It is a complete platform for creating bots for slack.
 
@@ -6,7 +6,7 @@
 <!-- - Json notation -->
 <!-- - 120k records or 80k complicated queries per second with confidence. -->
 
-[GitHub](https://github.com/HouzuoGuo/tiedot/)
+[GitHub](https://github.com/agoalofalife/ssb)
 [Get Started](#)
 
 <!-- background image -->

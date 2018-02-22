@@ -1,5 +1,5 @@
-const ChannelJoin = require('./../../../../Messages/MessageSubType/ChannelJoin');
-const DirectMessage = require('./../../../../Messages/MessageBase/DirectMessage');
+const ChannelJoin = require('../../../../src/Messages/MessageSubType/ChannelJoin');
+const DirectMessage = require('../../../../src/Messages/MessageBase/DirectMessage');
 const assert = require('assert');
 const faker = require('faker');
 let  fakeResponseSlack = {

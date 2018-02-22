@@ -1,5 +1,5 @@
 const assert = require('assert');
-const Command = require('./../../../Messages/Command');
+const Command = require('../../../src/Messages/Command');
 const faker = require('faker');
 
 let team_id = faker.random.number();

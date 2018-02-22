@@ -1,13 +1,13 @@
 #!/usr/bin/env node
 require('dotenv').config();
-require('../setting/color');
+require('../src/setting/color');
 require('console.table');
 
 const copy = require('fs-copy-file');
 const program = require('commander');
-const { version } = require('../helper');
+const { version } = require('../src/helper');
 const path = require('path');
-const Server = require('../Server/Server');
+const Server = require('../src/Server/Server');
 const urlAuth = 'https://slack.com/api/oauth.access';
 const axios = require('axios');
 // TODO Create cli application for  the entire process of obtaining a token
@@ -62,7 +62,7 @@ program.command('show <what>')
             case 'events':
                 let base = [];
                 let sub = [];
-                let listAccessRoutes = require('../route/schema');
+                let listAccessRoutes = require('../src/route/schema');
                 listAccessRoutes.forEach(route => {
                     let baseRoute = (new route.class);
                     base.push({

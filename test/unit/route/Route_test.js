@@ -1,4 +1,4 @@
-const RouteClass = require('./../../../route/Route');
+const RouteClass = require('../../../src/route/Route');
 const assert = require('assert');
 const faker = require('faker');
 const Route = new RouteClass();

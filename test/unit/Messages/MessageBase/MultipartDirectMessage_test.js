@@ -1,6 +1,6 @@
 const assert = require('assert');
-const MultipartDirectMessage = require('./../../../../Messages/MessageBase/MultipartDirectMessage');
-const BaseBot = require('./../../../../BaseBot');
+const MultipartDirectMessage = require('../../../../src/Messages/MessageBase/MultipartDirectMessage');
+const BaseBot = require('../../../../src/BaseBot');
 const faker = require('faker');
 const sinon = require('sinon');
 

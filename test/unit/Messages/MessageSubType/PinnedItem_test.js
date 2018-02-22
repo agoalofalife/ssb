@@ -1,5 +1,5 @@
-const PinnedItem = require('./../../../../Messages/MessageSubType/PinnedItem');
-const DirectMessage = require('./../../../../Messages/MessageBase/DirectMessage');
+const PinnedItem = require('../../../../src/Messages/MessageSubType/PinnedItem');
+const DirectMessage = require('../../../../src/Messages/MessageBase/DirectMessage');
 const assert = require('assert');
 const faker = require('faker');
 let  fakeResponseSlack = {

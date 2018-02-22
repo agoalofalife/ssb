@@ -1,8 +1,8 @@
-const BaseBotClass = require('../../BaseBot');
+const BaseBotClass = require('../../src/BaseBot');
 const faker = require('faker');
 const assert = require('assert');
-const ChannelMessage = require('./../../Messages/MessageBase/ChannelMessage');
-const MultipartDirectMessage = require('./../../Messages/MessageBase/MultipartDirectMessage');
+const ChannelMessage = require('../../src/Messages/MessageBase/ChannelMessage');
+const MultipartDirectMessage = require('../../src/Messages/MessageBase/MultipartDirectMessage');
 const sinon  = require('sinon');
 let team_id = faker.random.uuid();
 process.env.SLACK_VERIFICATION_TOKEN = faker.random.uuid();

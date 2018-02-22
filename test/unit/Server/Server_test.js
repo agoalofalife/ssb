@@ -1,4 +1,4 @@
-const Server = require('./../../../Server/Server');
+const Server = require('../../../src/Server/Server');
 const assert = require('assert');
 const faker = require('faker');
 // const expect = require('expect');

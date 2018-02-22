@@ -1,4 +1,4 @@
-const Message = require('./../MessageBase/Message');
+const Message = require('../MessageBase/Message');
 /**
  *
  * @type {module.BotMessage}

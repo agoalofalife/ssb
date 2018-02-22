@@ -1,4 +1,4 @@
-const ParserMessage = require('./../../../route/ParserMessage');
+const ParserMessage = require('../../../src/route/ParserMessage');
 const faker = require('faker');
 const chai = require('chai');
 const assert = require('assert');

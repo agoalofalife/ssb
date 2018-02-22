@@ -1,6 +1,6 @@
 require('dotenv').config();
 let token = process.env.SLACK_BOT_TOKEN;
-const SlackBot = require('./BaseBot');
+const SlackBot = require('./src/BaseBot');
 
 const bot = new SlackBot({
     token: token,

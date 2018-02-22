@@ -1,5 +1,5 @@
-const Cache = require('./../../../Cache/Cache');
-const BufferDriverCache = require('./../../../Cache/Drivers/BufferDriverCache');
+const Cache = require('../../../src/Cache/Cache');
+const BufferDriverCache = require('../../../src/Cache/Drivers/BufferDriverCache');
 
 const faker = require('faker');
 const assert = require('assert');

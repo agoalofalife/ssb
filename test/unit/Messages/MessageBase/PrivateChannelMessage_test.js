@@ -1,5 +1,5 @@
 const assert = require('assert');
-const PrivateChannelMessage = require('./../../../../Messages/MessageBase/PrivateChannelMessage');
+const PrivateChannelMessage = require('../../../../src/Messages/MessageBase/PrivateChannelMessage');
 const faker = require('faker');
 const sinon = require('sinon');
 

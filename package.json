@@ -3,7 +3,7 @@
   "bin": {
     "ssb": "./bin/app.js"
   },
-  "main": "BaseBot.js",
+  "main": "src/BaseBot.js",
   "version": "0.2.0",
   "description": "Slack bot framework for build platform",
   "keywords": [

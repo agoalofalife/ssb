@@ -2,3 +2,4 @@
 - [Создание приложения](/ru/create-app.md)
 - [Сообщения](/ru/messages.md)
 - [Команды](/ru/commands.md)
+- [Интерактив](/ru/interactive.md)

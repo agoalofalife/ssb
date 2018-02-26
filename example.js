@@ -68,7 +68,7 @@ bot.on('message.groups.pinned_item', (route, routeMention) => {
 
 bot.on('conversation', async (route, response) => {
     // first argument callback_id
-    route('welcome_button', function (responseInitiator, classConversation) {
+    route('like_service', function (responseInitiator, classConversation) {
         response.end('ok');
     });
 });

@@ -54,7 +54,7 @@ Usage: ssb [options] [command]
 
 ```
 
-Выполните в консоли:
+Выполните в консоли рабочей директории:
 
 ```bash
 ssb create env

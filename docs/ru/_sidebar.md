@@ -3,3 +3,5 @@
 - [Сообщения](/ru/messages.md)
 - [Команды](/ru/commands.md)
 - [Интерактив](/ru/interactive.md)
+- [CLI-приложение](/ru/cli.md)
+- [Туториал](/ru/tutorial.md)

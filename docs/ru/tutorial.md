@@ -83,7 +83,7 @@ bot.on('message.groups.pinned_item', (route, routeMention) => {
 
 База данных избыточно для примера, а просто записывать в файл в самый раз.
 
-Установим репозиторий
+Установим репозиторий для записи в файл.
 ```bash
 npm i nconf -s
 ```
@@ -98,3 +98,80 @@ const db = nconf.argv().env()
         file: path.join(__dirname, 'orders.json')
     });
 ```
+
+Теперь нам надо ловить взаимодействие с нашим меню.
+
+Мы будем записывать, кто сделал заказ, что заказал, и дату когда должна произойти доставка.
+
+Для этого используется библиотека `moment.js`.
+
+```javascript
+bot.on('conversation', async (route, response) => {
+    route('pizza_name', async function (responseInitiator, classConversation) {
+        // генерация номера заказа
+        let numberOrder = Math.floor(Math.random() * (100000 - 1)) + 1;
+        // пользователь
+        // какая пицца
+        // дата доставки
+        db.set(`${numberOrder}`, {
+            'user_id' : responseInitiator.user.id,
+            'pizza' : responseInitiator.actions.shift().selected_options.shift().value,
+            'delivery date': moment().add(40, 'minute'),
+        });
+        db.save();
+        response.end(`Ваш номер заказа ${numberOrder}. Доставка через 40 минут` );
+    });
+});
+```
+Добавление команды, для информации по заказу.
+Зайдем в наше приложении и добавим команду: `info-order`.
+
+```javascript
+bot.on('command', async (route, response) => {
+    route('/info-order', (responseInitiator, classCommand) => {
+     
+        let order = db.stores.file.store[responseInitiator.text];
+        let message = '';
+        // Если заказ найден
+        if (order !== undefined) {
+            message += 'Вы заказали ' + order.pizza ;
+            // Проверям дату достаки
+           // Текст в зависимости от даты
+            let diff = moment().diff('2018-02-26T14:49:57.076Z', 'minute');
+            if (diff <= 0) {
+                message += '. Ваш заказ будет через ' + Number(Math.abs(diff)) + ' минут.'
+            } else {
+                message += '. Ваш заказ уже привезли.'
+            }
+            response.json({
+                'text':message
+            });
+        }
+        response.json({
+            'text':'Заказ не найден'
+        });
+    });
+});
+```
+
+Как видите мы добавили команду, которая принимает номер заказа и ищет его в файле.
+Если он найден отображает справочную информацию о его судьбе, иначе заказ не найден.
+
+### Рекомендации
+
+В таком маленком приложении как это, все можно расположить в одном файле.
+
+Но рекомендуется разделить все по соответствущем папкам.
+Например создать папку `routes/react`, где будут складироваться реакции.
+
+```javascript
+// routes.js
+bot.on('message.channels', (route, routeMention) => {
+    route(/Я хочу пиццу|Пицца|Заказ/gi, PizzaController.order);
+});
+```
+Под сохранение выделить папку с `models`.
+
+Можно отдельно создать файлы-роуты с `conversation` и `command`.
+
+Старайтесь больше думать и удачи.

@@ -10,7 +10,13 @@ const path = require('path');
 const Server = require('../src/Server/Server');
 const urlAuth = 'https://slack.com/api/oauth.access';
 const axios = require('axios');
+const opn = require('opn');
+const inquirer = require('inquirer');
 // TODO Create cli application for  the entire process of obtaining a token
+
+
+// const info
+const approveScopeUrl = `https://slack.com/oauth/authorize?client_id=${process.env.SLACK_CLIENT_ID}&scope=client+admin`;
 
 program
     .version(version)
@@ -54,7 +60,6 @@ program
     });
 
 
-
 program.command('show <what>')
     .description('Show information')
     .action(async function (what) {
@@ -88,6 +93,27 @@ program.command('show <what>')
             default:
             return console.log('Not found something to show...'.warn)
         }
+    });
+
+program.command('approve scope')
+    .description('Approve scope and get access token')
+    .action(async function () {
+        inquirer
+            .prompt([
+                {
+                    type: 'list',
+                    name: 'browser',
+                    message: 'How to use the browser?',
+                    choices: ['Google Chrome', 'Firefox', 'Safari', 'Opera'],
+                    filter: function(val) {
+                        return val.toLowerCase();
+                    }
+                },
+            ])
+            .then(answer => {
+                opn(approveScopeUrl, {app: [answer.browser]});
+                return console.log('Open url in browser!'.info);
+            });
     });
 
 program.parse(process.argv);

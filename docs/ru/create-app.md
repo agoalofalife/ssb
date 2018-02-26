@@ -45,7 +45,12 @@ ngrok http 9000
 
 В консоли отобразится адрес, который вы должны скопировать и вставить.
 
-Теперь необходимо перейти по адресу `https://slack.com/oauth/authorize?client_id=CLIENT_ID&scope=client+admin`
+Теперь вам надо перейти по адресу `https://slack.com/oauth/authorize?client_id=CLIENT_ID&scope=client+admin`.
+
+Это можно сделать вречную, или набрать команду и выбрать ваш браузер :
+```bash
+ssb approve scope
+```
 
 ?> Обратите внимание что в `scope` вы указываете полные права, если вы хотите перечислить свои права, то можете обратиться в [оф. документации](https://api.slack.com/docs/oauth).
 

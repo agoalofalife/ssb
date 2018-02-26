@@ -22,7 +22,9 @@
     "dotenv": "^4.0.0",
     "express": "^4.16.2",
     "fs-copy-file": "^1.0.2",
+    "inquirer": "^5.1.0",
     "nodemon": "^1.14.12",
+    "opn": "^5.2.0",
     "slackbots": "^1.1.0",
     "to": "^0.2.9",
     "update": "^0.7.4"

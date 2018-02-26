@@ -60,7 +60,7 @@ module.exports = class BaseBot extends SlackBot {
                 return this.botId;
             } else {
                 try {
-                    let user = await this.getUserRealName(this.name);
+                    let user = await this.getUser(this.name);
                     this.botId = user.id;
                     return user.id;
                 } catch (err) {

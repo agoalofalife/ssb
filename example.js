@@ -74,7 +74,7 @@ bot.on('conversation', async (route, response) => {
 });
 
 bot.on('command', async (route, response) => {
-    route('/start', (responseInitiator, classCommand) => {
+    route('/time', (responseInitiator, classCommand) => {
         // console.log(responseInitiator);
         console.log(classCommand.base.team.id);
         response.end();

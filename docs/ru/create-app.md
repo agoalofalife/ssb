@@ -16,13 +16,13 @@
 Следует ввести :
 - **Название вашего приложения**
 - **И ваше slack чат или `(Workspace)`**
-<img src="/images/createapp1.jpg">
+<img src="./images/createapp1.jpg">
 
 Теперь необходимо скопировать и вставить в файл `.env` значения из вашего приложения:
 
 ?> Файл `.env` создается через cli приложение.
 
-<img src="/images/createapp2.jpg">
+<img src="./images/createapp2.jpg">
 
 Осталось дело за малым - получить токен.
 
@@ -33,7 +33,7 @@ ssb server -s
 Консоль запустит сервер для получения токена.
 После этого нужно указать реальный адрес в сети, куда будет приходить токен.
 
-<img src="/images/redirect.jpg">
+<img src="./images/redirect.jpg">
 
 !> Для того, чтобы пробросить локальный адрес в сеть, используется **[ngrok](https://ngrok.com/)**
 
@@ -55,7 +55,7 @@ ssb approve scope
 ?> Обратите внимание, что в `scope` указываются полные права, если требуется перечислить права, можно обратиться к [оф. документации](https://api.slack.com/docs/oauth).
 
 В браузере откроется следующее..
-<img src="/images/authorize.jpg">
+<img src="./images/authorize.jpg">
 
 После нажатия на кнопку авторизации, переходим обратно в консоль, копируем `access_token` и в файлe `.env`, проставляем `SLACK_BOT_TOKEN`.
 Это все, что нужно сделать!
@@ -68,7 +68,7 @@ ssb approve scope
 
 Перейдите на страницу приложения в раздел `Bot Users`.
 
-<img src="/images/create-bot.jpg">
+<img src="./images/create-bot.jpg">
 
 Установите имя для бота и переключатель режима отображения.
 

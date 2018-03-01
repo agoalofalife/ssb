@@ -17,13 +17,13 @@ After you click on the green button `"Create new App"`.
 You have to write :
 - **The name of your app**
 - **And your chat or `(Workspace)`**
-<img src="/images/createapp1.jpg">
+<img src="./images/createapp1.jpg">
 
 Now you need to copy and paste the file `.env` values from your application:
 
 ?> The file `.env`  is created through cli.
 
-<img src="/images/createapp2.jpg">
+<img src="./images/createapp2.jpg">
 
 It remains the case for small - to token.
 
@@ -35,7 +35,7 @@ The console will start the server to obtain the token..
 
 After that, you need to specify the real address in the network, which will receive the token.
 
-<img src="/images/redirect.jpg">
+<img src="./images/redirect.jpg">
 
 !> In order to map the local address into the network, is used **[ngrok](https://ngrok.com/)**
 
@@ -57,7 +57,7 @@ ssb approve scope
 ?> Please note that `scope` specifies the full rights, if you want to list rights, you can refer to [documentation](https://api.slack.com/docs/oauth).
 
 The browser displays the following.
-<img src="/images/authorize.jpg">
+<img src="./images/authorize.jpg">
 
 After clicking the authorize button, go back to the console, copy `access_token` and in file `.env`, paste `SLACK_BOT_TOKEN`.
 That's all you need to do!
@@ -70,7 +70,7 @@ You can stop the server and start to implement.
 
 Go to the application page in the section `Bot Users`.
 
-<img src="/images/create-bot.jpg">
+<img src="./images/create-bot.jpg">
 
 Set the name to the bot and switch display mode.
 

@@ -19,7 +19,7 @@ Create a team via the app.
 
 Go to the app and press the button to create a **command**.
 
-<img src="/images/create-command.jpg">
+<img src="./images/create-command.jpg">
 
 Next you need to fill in the required fields:
 - Your command name.
@@ -29,7 +29,7 @@ Next you need to fill in the required fields:
 !> **Please note** to delineate the area of queries, after the host is added as a prefix `/commands`.
 Example `https://host.com/commands`.
 
-<img src="/images/command-create-prew.jpg">
+<img src="./images/command-create-prew.jpg">
 
 After creating the teams, to the address which we have pointed out, will come the queries.
 

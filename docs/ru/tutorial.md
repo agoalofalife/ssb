@@ -75,7 +75,7 @@ bot.on('message.channels', (route, routeMention) => {
 });
 ```
 Выглядит это примерно так:
-<img src="/images/pizza-list-ru.jpg">
+<img src="./images/pizza-list-ru.jpg">
 
 После того как пицца выбрана, надо записать наш заказ в базу данных и отправить ответ с номером заказа.
 

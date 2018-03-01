@@ -20,7 +20,7 @@ The server address specified in your application.
 - The second field is the address to a dynamic menu. That is, if initially not known to the list menu, it is possible to use request to server.
 
 
-<img src="/images/create-interactive.jpg">
+<img src="./images/create-interactive.jpg">
 
 !> **Please note**, after host name is written prefix `conversation`. It is required.
 
@@ -73,7 +73,7 @@ bot.on('message.im', (route, routeMention) => {
 });
 ```
 
-<img src="/images/interactive-start-en.jpg">
+<img src="./images/interactive-start-en.jpg">
 
 After sending a message, two buttons will appear where you have to make a choice. It is the pressing on these buttons will send the request to the server.
 

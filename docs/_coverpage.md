@@ -7,7 +7,7 @@
 - Modern
 
 [GitHub](https://github.com/agoalofalife/ssb)
-[Get Started](#)
+[Get Started](#what-is-ssb-)
 
 <!-- background image -->
 <!-- ![](http://golang.org/doc/gopher/frontpage.png) -->

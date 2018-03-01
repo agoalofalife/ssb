@@ -25,7 +25,7 @@ const bot = new SlackBot({
 });
 
 ```
- Теперь в любом публичном канале, мы ловем сообщение которые перечисленны выше.
+ Теперь в любом публичном канале, мы ловим сообщение которые перечисленны выше.
  
  Как только поступает нужное нам событие, мы отправляем интерактивное меню с выбором пицц.
  
@@ -68,7 +68,7 @@ let interactivePizzaList = {
      }
  ]
 };
-bot.on('message.groups.pinned_item', (route, routeMention) => {
+bot.on('message.channels', (route, routeMention) => {
     route(/Я хочу пиццу|Пицца|Заказ/gi, async function (response, classMessage) {
         await classMessage.reply('Вас приветствует пицца-бот!', interactivePizzaList);
     });

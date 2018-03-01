@@ -1,3 +1,6 @@
+!> I not speak English perfectly. 
+If you do not understand something or you think that you can improve, i always enjoy the comments and help.
+
 ## What is SSB ?
 SSB - stands for Super Slack Bot.
 

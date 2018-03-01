@@ -2,9 +2,9 @@
 
 >  It is a complete platform for creating bots for slack.
 
-- Fully covered by tests
 - Flexible
 - Modern
+- Fully covered by tests
 
 [GitHub](https://github.com/agoalofalife/ssb)
 [Get Started](#what-is-ssb-)

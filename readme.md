@@ -15,3 +15,5 @@ Usually we do not want to disassemble authentication, application architecture a
 
 We just want to add configuration and quick to develop, so go ahead!
 
+- [Documentation](https://agoalofalife.github.io/ssb)
+

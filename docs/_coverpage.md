@@ -2,9 +2,9 @@
 
 >  It is a complete platform for creating bots for slack.
 
-<!-- - Fault-tolerant data structures -->
-<!-- - Json notation -->
-<!-- - 120k records or 80k complicated queries per second with confidence. -->
+- Fully covered by tests
+- Flexible
+- Modern
 
 [GitHub](https://github.com/agoalofalife/ssb)
 [Get Started](#)

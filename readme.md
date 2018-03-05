@@ -1,5 +1,11 @@
 <h1 align="center">(SSB) Super Slack Bot</h1>
 
+<h1 align="center">
+  <br>
+  <a href="https://agoalofalife.github.io/ssb/#/"><img src="https://github.com/agoalofalife/ssb/blob/master/docs/images/head.jpg" alt="ORCHID" width="450"></a>
+  <br>
+  <br>
+</h1>
 <p align="center">
  <a href="https://travis-ci.org/agoalofalife/ssb">
  <img src="https://travis-ci.org/agoalofalife/ssb.svg?branch=master"></a>
@@ -16,4 +22,3 @@ Usually we do not want to disassemble authentication, application architecture a
 We just want to add configuration and quick to develop, so go ahead!
 
 - [Documentation](https://agoalofalife.github.io/ssb)
-

@@ -2,7 +2,7 @@
 
 <h1 align="center">
   <br>
-  <a href="https://agoalofalife.github.io/ssb/#/"><img src="https://github.com/agoalofalife/ssb/blob/master/docs/images/head.jpg" alt="ORCHID" width="450"></a>
+  <a href="https://agoalofalife.github.io/ssb/#/"><img src="https://github.com/agoalofalife/ssb/blob/master/docs/images/head.jpg" alt="image" width="450"></a>
   <br>
   <br>
 </h1>

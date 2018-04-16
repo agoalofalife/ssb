@@ -20,5 +20,3 @@ The basic idea of the platform, to create a complete tool to work with bots in t
 Usually we do not want to disassemble authentication, application architecture and implementation for various protocols.
 
 We just want to add configuration and quick to develop, so go ahead!
-
-- [Documentation](https://agoalofalife.github.io/ssb)
